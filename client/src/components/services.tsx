@@ -111,7 +111,7 @@ export function Services() {
             <div className="absolute top-0 right-0 w-32 h-32 bg-secondary/20 rounded-full blur-2xl" />
             <div className="absolute bottom-0 left-0 w-32 h-32 bg-white/10 rounded-full blur-2xl" />
             
-            <h4 className="text-2xl font-display font-bold mb-4 relative z-10">
+            <h4 className="text-2xl font-display font-bold mb-4 relative z-10 text-white">
               Need a Custom Solution?
             </h4>
             <p className="text-white/80 mb-8 relative z-10">
