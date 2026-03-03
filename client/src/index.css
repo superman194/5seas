@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-display: 'Outfit', sans-serif;
+    --font-sans: 'Plus Jakarta Sans', sans-serif;
+
+    /* Navy Blue & Teal Corporate Theme */
+    --background: 0 0% 100%;
+    --foreground: 222 47% 11%;
+    
+    /* Primary: Navy Blue */
+    --primary: 222 47% 15%;
+    --primary-foreground: 210 40% 98%;
+    
+    /* Secondary/Accent: Teal */
+    --secondary: 175 80% 35%;
+    --secondary-foreground: 0 0% 100%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+    
+    --accent: 175 80% 35%;
+    --accent-foreground: 0 0% 100%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 175 80% 35%;
+
+    --radius: 0.75rem;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased selection:bg-secondary selection:text-white;
+    font-family: var(--font-sans);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    @apply font-bold tracking-tight text-primary;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .bg-grid-pattern {
+    background-image: linear-gradient(to right, hsl(var(--muted)) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--muted)) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+  .glass-nav {
+    @apply bg-white/80 backdrop-blur-md border-b border-border/50 shadow-sm;
+  }
+}

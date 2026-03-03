@@ -1,0 +1,89 @@
+Create a modern, professional, responsive business website for a company named "5SeasSolution".
+
+About the company:
+5SeasSolution provides multiple business services under one roof:
+- IT Services (Website Development, Software Development, App Development, Maintenance)
+- Digital Marketing (SEO, Social Media Marketing, Ads, Branding)
+- Virtual Office Services (Business Address, GST Registration Support, Mail Handling)
+- CA Services (GST Filing, Income Tax Filing, Company Registration, Accounting)
+- Designing Services (Graphic Design, Logo Design, Branding, Content Creation)
+
+Website Requirements:
+
+1. Design Style:
+- Clean, modern, corporate look
+- White background with navy blue and teal accent colors
+- Smooth scrolling
+- Professional fonts
+- Responsive for mobile and desktop
+- Subtle animations on scroll
+
+2. Sections Required:
+
+A. Hero Section:
+- Big heading: "All Business Solutions Under One Roof"
+- Subheading: "IT, Marketing, CA, Virtual Office & Creative Services"
+- Two buttons:
+   1. "Get Free Consultation"
+   2. "Chat on WhatsApp"
+- Background with subtle business-themed gradient or abstract shapes
+
+B. About Section:
+Short paragraph about 5SeasSolution:
+"5SeasSolution is a multi-service business consultancy providing complete digital and compliance solutions for startups, SMEs, and enterprises. We help businesses grow, operate, and scale with confidence."
+
+C. Services Section (with icons/cards layout):
+Create 5 service cards with hover effects:
+- IT Services
+- Digital Marketing
+- Virtual Office
+- CA Services
+- Designing & Branding
+
+Each card should have:
+- Icon
+- Short 2-line description
+- "Learn More" button
+
+D. Why Choose Us Section:
+Bullet points:
+- One-stop solution
+- Experienced professionals
+- Affordable pricing
+- Fast support
+- Transparent process
+
+E. Contact Section:
+- Contact form (Name, Email, Phone, Service Needed, Message)
+- Submit button
+- Company phone number
+- Email ID placeholder
+
+F. Footer:
+- Company Name
+- Quick links
+- Social media icons
+- Copyright text
+
+3. WhatsApp Button Integration:
+
+Add a floating WhatsApp button on bottom right corner.
+When clicked, it should open WhatsApp chat with this number:
+
++91XXXXXXXXXX  (Replace with my number)
+
+Use this message as default pre-filled message:
+"Hello 5SeasSolution, I am interested in your services. Please share more details."
+
+Use this WhatsApp link format:
+https://wa.me/91XXXXXXXXXX?text=Hello%205SeasSolution%2C%20I%20am%20interested%20in%20your%20services.
+
+4. Extra Requirements:
+- SEO optimized structure
+- Proper headings (H1, H2, H3)
+- Fast loading
+- Clean structured code
+- Add meta title: "5SeasSolution | Complete Business Services"
+- Add meta description: "IT Services, Digital Marketing, Virtual Office, CA Services and Designing Solutions under one roof."
+
+Make it production-ready and visually premium.
