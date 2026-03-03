@@ -32,12 +32,12 @@ const features = [
 export function Features() {
   return (
     <section id="why-us" className="py-24 bg-primary text-white relative overflow-hidden">
-      <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=2574&auto=format&fit=crop')] bg-cover bg-center opacity-5 mix-blend-overlay pointer-events-none" />
+      <div className="absolute inset-0 bg-[url(https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=2574&auto=format&fit=crop)] bg-cover bg-center opacity-20" />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-sm font-bold text-secondary uppercase tracking-wider mb-2">Why Choose Us</h2>
-          <h3 className="text-3xl md:text-5xl font-display font-bold mb-6">
+          <h3 className="text-3xl md:text-5xl font-display font-bold mb-6 text-white">
             The 5SeasSolution Advantage
           </h3>
           <p className="text-lg text-white/70">
@@ -58,7 +58,7 @@ export function Features() {
               <div className="w-12 h-12 rounded-full bg-secondary/20 flex items-center justify-center text-secondary mb-6">
                 <feature.icon className="w-6 h-6" />
               </div>
-              <h4 className="text-xl font-bold font-display mb-3">{feature.title}</h4>
+              <h4 className="text-xl font-bold font-display mb-3 text-white/80">{feature.title}</h4>
               <p className="text-white/70 leading-relaxed">
                 {feature.description}
               </p>
