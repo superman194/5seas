@@ -4,20 +4,6 @@ import { Button } from "@/components/ui/button";
 
 const servicesData = [
   {
-    title: "IT Services",
-    description: "Robust infrastructure, software development, and technical support to power your business operations.",
-    icon: Monitor,
-    color: "from-blue-500/20 to-blue-500/5",
-    iconColor: "text-blue-500"
-  },
-  {
-    title: "Digital Marketing",
-    description: "Data-driven SEO, social media, and paid campaigns to accelerate your growth and visibility.",
-    icon: Megaphone,
-    color: "from-teal-500/20 to-teal-500/5",
-    iconColor: "text-teal-500"
-  },
-  {
     title: "Virtual Office",
     description: "Premium business addresses, mail handling, and professional receptionist services.",
     icon: Building2,
@@ -30,6 +16,20 @@ const servicesData = [
     icon: Calculator,
     color: "from-emerald-500/20 to-emerald-500/5",
     iconColor: "text-emerald-500"
+  },
+  {
+    title: "IT Services",
+    description: "Robust infrastructure, software development, and technical support to power your business operations.",
+    icon: Monitor,
+    color: "from-blue-500/20 to-blue-500/5",
+    iconColor: "text-blue-500"
+  },
+  {
+    title: "Digital Marketing",
+    description: "Data-driven SEO, social media, and paid campaigns to accelerate your growth and visibility.",
+    icon: Megaphone,
+    color: "from-teal-500/20 to-teal-500/5",
+    iconColor: "text-teal-500"
   },
   {
     title: "Designing & Branding",
