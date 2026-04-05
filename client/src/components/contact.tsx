@@ -39,23 +39,21 @@ export function Contact() {
   });
 
   const onSubmit = (data: CreateContactInput) => {
-  // ❌ backend temporarily disabled (causing 500 error)
-  // mutation.mutate(data, {
-  //   onSuccess: () => form.reset(),
-  // });
-
-  // ✅ Netlify submission
   fetch("/", {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
     body: new URLSearchParams({
       "form-name": "contact",
-      ...data,
+      name: data.name,
+      email: data.email,
+      phone: data.phone,
+      serviceNeeded: data.serviceNeeded,
+      message: data.message,
     }).toString(),
   });
 
   form.reset();
-  };
+};
 
   return (
     <section id="contact" className="py-24 bg-white">
