@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
 
     <!-- Title -->
-    <title>5SeasSolution | IT & Business Services</title>
+    <title>5SeasSolution | CA,IT & Business Services</title>
 
     <!-- SEO -->
     <meta name="description" content="5SeasSolution offers IT services, Digital Marketing, Virtual Office, CA services and Design solutions for businesses." />
@@ -41,5 +41,23 @@
 
     <!-- React entry -->
     <script type="module" src="/src/main.tsx"></script>
+
+    <body>
+
+  <!-- ✅ Netlify form detection (IMPORTANT) -->
+  <form name="contact" method="POST" data-netlify="true" hidden>
+    <input type="hidden" name="form-name" value="contact" />
+    <input type="text" name="name" />
+    <input type="email" name="email" />
+    <input type="tel" name="phone" />
+    <input type="text" name="serviceNeeded" />
+    <textarea name="message"></textarea>
+  </form>
+
+  <div id="root"></div>
+
+  <!-- React entry -->
+  <script type="module" src="/src/main.tsx"></script>
+</body>
   </body>
 </html>
