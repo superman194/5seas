@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 export function FloatingWhatsApp() {
   const handleWhatsAppClick = () => {
     // Note: Replaced with placeholder per implementation notes
-    const url = "https://wa.me/919999999999?text=Hello%205SeasSolution%2C%20I%20am%20interested%20in%20your%20services.";
+    const url = "https://wa.me/+919958173726?text=Hello%205SeasSolution%2C%20I%20am%20interested%20in%20your%20services.";
     window.open(url, "_blank");
   };
 
