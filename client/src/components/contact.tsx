@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
+import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { insertContactMessageSchema } from "@shared/schema";
 import type { CreateContactInput } from "@shared/routes";
@@ -26,6 +27,7 @@ import { Button } from "@/components/ui/button";
 
 export function Contact() {
   const mutation = useCreateContactMessage();
+  const [showToast, setShowToast] = useState(false);
   
   const form = useForm<CreateContactInput>({
     resolver: zodResolver(insertContactMessageSchema),
@@ -38,22 +40,53 @@ export function Contact() {
     },
   });
 
-  const onSubmit = (data: CreateContactInput) => {
-  fetch("/", {
-    method: "POST",
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: new URLSearchParams({
-      "form-name": "contact",
-      name: data.name,
-      email: data.email,
-      phone: data.phone,
-      serviceNeeded: data.serviceNeeded,
-      message: data.message,
-    }).toString(),
-  });
+  // const onSubmit = (data: CreateContactInput) => {
+  // fetch("/", {
+  //   method: "POST",
+  //   headers: { "Content-Type": "application/x-www-form-urlencoded" },
+  //   body: new URLSearchParams({
+  //     "form-name": "contact",
+  //     name: data.name,
+  //     email: data.email,
+  //     phone: data.phone,
+  //     serviceNeeded: data.serviceNeeded,
+  //     message: data.message,
+  //   }).toString(),
+  //   });
+  //    //  show toast
+  //     setShowToast(true);
+  //     setTimeout(() => setShowToast(false), 3000);
+  //     // alert("Inquiry submitted! We'll connect you soon.");
+  //     form.reset();
+  //   };
+        const onSubmit = async (data: CreateContactInput) => {
+          try {
+            const response = await fetch("/", {
+              method: "POST",
+              headers: { "Content-Type": "application/x-www-form-urlencoded" },
+              body: new URLSearchParams({
+                "form-name": "contact",
+                name: data.name,
+                email: data.email,
+                phone: data.phone,
+                serviceNeeded: data.serviceNeeded,
+                message: data.message,
+              }).toString(),
+            });
 
-  form.reset();
-};
+            if (response.ok) {
+              //  only when success
+              form.reset();
+              setShowToast(true);
+
+              setTimeout(() => setShowToast(false), 3000);
+            } else {
+              console.error("Submission failed");
+            }
+          } catch (error) {
+            console.error("Error:", error);
+          }
+        };
 
   return (
     <section id="contact" className="py-24 bg-white">
@@ -235,6 +268,12 @@ export function Contact() {
           </motion.div>
         </div>
       </div>
+          
+        {showToast && (
+        <div className="fixed bottom-6 right-6 bg-green-600 text-white px-6 py-3 rounded-xl shadow-lg z-50 transition-all duration-300">
+          Inquiry submitted! We'll connect you soon.
+        </div>
+       )}
     </section>
   );
 }
