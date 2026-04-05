@@ -70,7 +70,7 @@ export function Contact() {
                 </div>
                 <div>
                   <h4 className="font-bold text-primary text-lg">Call Us</h4>
-                  <p className="text-muted-foreground">+91 99999 99999</p>
+                  <p className="text-muted-foreground">+91 99581 73726</p>
                   <p className="text-sm text-muted-foreground mt-1">Mon-Fri, 9am to 6pm</p>
                 </div>
               </div>
@@ -81,8 +81,8 @@ export function Contact() {
                 </div>
                 <div>
                   <h4 className="font-bold text-primary text-lg">Email Us</h4>
-                  <p className="text-muted-foreground">hello@5seassolution.com</p>
-                  <p className="text-sm text-muted-foreground mt-1">We typically reply within 24 hours</p>
+                  <p className="text-muted-foreground">5seassolution@gmail.com</p>
+                  <p className="text-sm text-muted-foreground mt-1">We typically reply within 12 - 24 hours</p>
                 </div>
               </div>
 
@@ -108,8 +108,14 @@ export function Contact() {
             <h3 className="text-2xl font-bold text-primary mb-6">Send a Message</h3>
             
             <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                
+                <form 
+                  name="contact"
+                  method="POST"
+                  data-netlify="true"
+                  onSubmit={form.handleSubmit(onSubmit)} 
+                  className="space-y-6"
+                >
+                <input type="hidden" name="form-name" value="contact" />
                 <FormField
                   control={form.control}
                   name="name"
@@ -167,10 +173,10 @@ export function Contact() {
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
-                          <SelectItem value="IT Services">IT Services</SelectItem>
-                          <SelectItem value="Digital Marketing">Digital Marketing</SelectItem>
-                          <SelectItem value="Virtual Office">Virtual Office</SelectItem>
                           <SelectItem value="CA Services">CA Services</SelectItem>
+                          <SelectItem value="Digital Marketing">Digital Marketing</SelectItem>
+                          <SelectItem value="IT Services">IT Services</SelectItem>
+                          <SelectItem value="Virtual Office">Virtual Office</SelectItem>
                           <SelectItem value="Designing & Branding">Designing & Branding</SelectItem>
                           <SelectItem value="Other">Other / Multiple</SelectItem>
                         </SelectContent>
