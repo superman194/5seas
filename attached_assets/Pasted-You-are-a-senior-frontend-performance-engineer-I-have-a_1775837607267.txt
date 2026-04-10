@@ -1,0 +1,122 @@
+You are a senior frontend performance engineer.
+
+I have a live production website:
+https://5seassolutions.com
+and GitHub repo:
+https://github.com/superman194/5seas.git
+
+⚠️ PROBLEM:
+- Website flickers on first load and during navigation
+- Dark mode causes visible flashing before stabilizing
+- Pages re-render 2–3 times before settling
+- Overall experience feels non-premium and slow
+
+🎯 GOAL:
+Fix ALL flickering and make the website feel premium, smooth, and fast WITHOUT changing UI, layout, or functionality.
+
+---
+
+🧠 TASK BREAKDOWN (DO EVERYTHING IN ONE GO):
+
+### 1. FIX DARK MODE FLICKER (CRITICAL)
+- Prevent theme flash before React loads
+- Inject inline script in <head> to set theme BEFORE render
+- Use localStorage + prefers-color-scheme fallback
+- Apply class to <html> immediately (NOT after hydration)
+
+Example approach:
+- Immediately set `document.documentElement.classList.add('dark')` before React loads
+- Avoid waiting for JS bundle
+
+---
+
+### 2. REMOVE FOUC (FLASH OF UNSTYLED CONTENT)
+- Ensure CSS loads before render
+- Inline critical CSS (above-the-fold)
+- Avoid delayed Tailwind injection issues
+- Add proper font loading strategy:
+  - use `font-display: swap` or `optional`
+- Preload main CSS
+
+---
+
+### 3. FIX ROUTING FLICKER (SPA ISSUE)
+- Prevent full re-renders on navigation
+- Ensure smooth transitions between routes
+- Use layout persistence (common layout should not re-mount)
+- Avoid unnecessary state resets
+- Optimize React Router usage:
+  - Use `Outlet` properly
+  - Avoid remounting parent components
+
+---
+
+### 4. REDUCE RE-RENDERS
+- Identify unnecessary re-renders
+- Use:
+  - React.memo
+  - useMemo
+  - useCallback
+- Prevent state resets on navigation
+
+---
+
+### 5. IMPROVE INITIAL LOAD SPEED
+- Lazy load non-critical components
+- Optimize images (use proper sizes + lazy loading)
+- Add:
+  - preload for hero assets
+  - defer non-critical scripts
+- Enable code splitting
+
+---
+
+### 6. SMOOTH TRANSITIONS (PREMIUM FEEL)
+- Add subtle page transitions (fade, not flicker)
+- Ensure no layout shift (CLS should be minimal)
+- Avoid content jumping
+
+---
+
+### 7. CHECK MARKETING + NAVIGATION
+- Verify all internal links work correctly
+- Ensure no broken routes
+- Ensure CTA buttons navigate correctly
+- Improve perceived performance for landing page
+
+---
+
+### 8. CLEAN ARCHITECTURE (IMPORTANT)
+- Refactor only where needed (DO NOT change UI)
+- Keep code modular and clean
+- Remove redundant code
+- Ensure production-ready structure
+
+---
+
+### 9. PRODUCTION OPTIMIZATION
+- Ensure build is optimized:
+  - minification
+  - tree shaking
+- Remove console logs
+- Optimize Tailwind usage (purge unused CSS)
+
+---
+
+⚠️ STRICT RULES:
+- DO NOT change UI design
+- DO NOT change layout
+- DO NOT break functionality
+- ONLY improve performance, smoothness, and code quality
+
+---
+
+🎯 EXPECTED OUTPUT:
+- Updated code snippets (ready to copy-paste)
+- Exact file locations for changes
+- Clear explanation of what was fixed
+- Final result: NO flicker, smooth navigation, fast load, premium feel
+
+---
+
+Think like you're fixing a high-end SaaS website experience.

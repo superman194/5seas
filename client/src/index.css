@@ -95,25 +95,46 @@
 
   html {
     scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Smooth theme transition on all elements */
+  /* Premium thin scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--border));
+    border-radius: 999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--muted-foreground));
+  }
+
+  /* Smooth theme transition on all elements — only colour-related props,
+     never transform/opacity so Framer Motion animations are unaffected. */
   *,
   *::before,
   *::after {
-    transition-property: background-color, border-color, color, fill, stroke, box-shadow, opacity;
-    transition-duration: 300ms;
-    transition-timing-function: ease;
+    transition-property: background-color, border-color, color, fill, stroke, box-shadow;
+    transition-duration: 250ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  /* Disable transition on initial page load */
-  .no-transition * {
+  /* Applied during initial page paint (removed in main.tsx after first frame)
+     to prevent colour transitions from firing on first render. */
+  .no-transition,
+  .no-transition *,
+  .no-transition *::before,
+  .no-transition *::after {
     transition: none !important;
-  }
-
-  /* Override framer-motion timing so it isn't overridden */
-  [style*="transform"] {
-    transition-property: background-color, border-color, color, fill, stroke, box-shadow, opacity;
+    animation-duration: 0.001ms !important;
   }
 
   body {

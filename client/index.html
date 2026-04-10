@@ -21,10 +21,31 @@
     <link rel="manifest" href="/site.webmanifest">
     <meta name="theme-color" content="#0f3460">
 
-    <!-- Fonts -->
+    <!-- Fonts — preconnect first, then load with display=swap to avoid FOIT -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!--
+      CRITICAL: Inline theme script — runs synchronously BEFORE any render.
+      Reads localStorage and applies the .dark class to <html> immediately,
+      completely eliminating the dark-mode flash (FOUC).
+      Also adds .no-transition so the global CSS colour transitions
+      don't fire during the initial paint; removed in main.tsx after mount.
+    -->
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem('5seas_theme');
+          var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          var theme = stored || (prefersDark ? 'dark' : 'light');
+          if (theme === 'dark') {
+            document.documentElement.classList.add('dark');
+          }
+        } catch (e) {}
+        document.documentElement.classList.add('no-transition');
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
