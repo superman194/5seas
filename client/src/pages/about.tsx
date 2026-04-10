@@ -1,6 +1,5 @@
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
-import { FloatingWhatsApp } from "@/components/floating-whatsapp";
 import { CtaSection } from "@/components/cta-section";
 import { Stats } from "@/components/stats";
 import { motion } from "framer-motion";
@@ -153,7 +152,6 @@ export default function About() {
 
       <CtaSection />
       <Footer />
-      <FloatingWhatsApp />
     </div>
   );
 }

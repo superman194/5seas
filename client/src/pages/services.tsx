@@ -3,7 +3,6 @@ import { ArrowRight, CheckCircle2, Users, Award, Briefcase } from "lucide-react"
 import { Link } from "wouter";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
-import { FloatingWhatsApp } from "@/components/floating-whatsapp";
 import { CtaSection } from "@/components/cta-section";
 import { servicesData } from "@/data/services-data";
 
@@ -212,7 +211,6 @@ export default function ServicesPage() {
 
       <CtaSection />
       <Footer />
-      <FloatingWhatsApp />
     </div>
   );
 }

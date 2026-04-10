@@ -8,6 +8,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { WelcomePopup } from "@/components/welcome-popup";
 import { ThemeProvider } from "@/hooks/use-theme";
 import { OfflineOverlay } from "@/components/offline-overlay";
+import { FloatingWhatsApp } from "@/components/floating-whatsapp";
 
 import Home from "@/pages/home";
 
@@ -89,6 +90,7 @@ function App() {
           <Toaster />
           <WelcomePopup />
           <OfflineOverlay />
+          <FloatingWhatsApp />
           <AnimatedRouter />
         </TooltipProvider>
       </QueryClientProvider>

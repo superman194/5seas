@@ -1,6 +1,5 @@
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
-import { FloatingWhatsApp } from "@/components/floating-whatsapp";
 import { motion } from "framer-motion";
 
 const COMPANY = "5SeasSolution";
@@ -91,7 +90,6 @@ export default function Disclaimer() {
       </section>
 
       <Footer />
-      <FloatingWhatsApp />
     </div>
   );
 }

@@ -1,6 +1,5 @@
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
-import { FloatingWhatsApp } from "@/components/floating-whatsapp";
 import { CtaSection } from "@/components/cta-section";
 import { motion } from "framer-motion";
 import { ArrowRight, Check, Search, Share2, DollarSign, BarChart2, Users, Megaphone, Target, TrendingUp, Mail, Globe } from "lucide-react";
@@ -243,7 +242,6 @@ export default function DigitalMarketing() {
 
       <CtaSection />
       <Footer />
-      <FloatingWhatsApp />
     </div>
   );
 }

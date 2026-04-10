@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
-import { FloatingWhatsApp } from "@/components/floating-whatsapp";
 import { CtaSection } from "@/components/cta-section";
 import type { LucideIcon } from "lucide-react";
 
@@ -244,7 +243,6 @@ export function ServicePageLayout({
 
       <CtaSection />
       <Footer />
-      <FloatingWhatsApp />
     </div>
   );
 }
