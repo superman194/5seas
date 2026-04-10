@@ -137,15 +137,15 @@ export function Contact() {
                 </a>
               ))}
 
-              {/* Image with gradient overlay */}
-              <div className="mt-4 rounded-3xl overflow-hidden border border-border/50 shadow-lg h-52 relative">
+              {/* Image with gradient overlay + zoom-on-hover animation */}
+              <div className="mt-4 rounded-3xl overflow-hidden border border-border/50 shadow-lg h-52 relative group">
                 <img
                   src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=900&q=75&auto=format&fit=crop"
                   alt="Modern business office"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/50 via-primary/10 to-transparent" />
                 <div className="absolute bottom-4 left-5 text-white">
                   <p className="text-sm font-semibold opacity-90">Gurgaon, India</p>
                   <p className="text-xs opacity-70">Corporate Business Hub</p>

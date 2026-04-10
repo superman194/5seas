@@ -1,0 +1,97 @@
+You are working on an existing website project from this GitHub repo:
+https://github.com/superman194/5seas.git
+
+IMPORTANT RULES:
+
+* Do NOT change structure, layout, or existing logic unnecessarily
+* Do NOT refactor the whole project
+* Only make minimal, targeted improvements
+* Keep everything lightweight and production-ready
+
+TASKS:
+
+1. CONTACT FORM (VERY IMPORTANT – NETLIFY INTEGRATION)
+
+* Update the existing Contact Us form so Netlify can detect it
+
+* Add required attributes:
+
+  * name="contact"
+  * method="POST"
+  * data-netlify="true"
+  * netlify-honeypot="bot-field"
+
+* Add hidden input: <input type="hidden" name="form-name" value="contact" />
+
+* Ensure ALL input fields have proper "name" attributes
+
+* Add a hidden honeypot field: <input type="text" name="bot-field" style="display:none;" />
+
+* Do NOT break styling or layout
+
+2. SUCCESS POPUP AFTER SUBMISSION
+
+* After form submission, show a clean premium popup/modal:
+
+  * Message: "Thank you! We'll get back to you shortly."
+* Use simple JS (no heavy libraries)
+* Ensure it works even if Netlify handles submission
+
+3. VISUAL PREMIUM IMPROVEMENTS (MINIMAL BUT HIGH QUALITY)
+
+* Replace or add some images to make the website look more premium:
+
+  * Use high-quality modern business/tech images
+  * Add 2–4 images maximum (no clutter)
+  * One near Contact section (important)
+  * One subtle background or side image if suitable
+
+* Use overlays, gradients, or slight blur for premium feel
+
+* Maintain minimal and clean design (no redesign)
+
+4. ADD ONE PREMIUM MINIMAL ANIMATION (ONLY ONE)
+
+* Add ONLY one smooth, subtle animation such as:
+
+  * Fade-in on scroll OR
+  * Button hover micro-animation OR
+  * Image slight zoom on hover
+
+* Keep it:
+
+  * Fast
+  * Lightweight (CSS preferred)
+  * Elegant and premium (NOT flashy)
+
+5. SMALL UI POLISH
+
+* Improve spacing slightly if needed
+* Add better input focus states
+* Slight button hover improvement
+
+6. FINAL OUTPUT
+
+* Provide FULL updated code for ONLY the files you changed
+* Ensure code is ready to copy-paste
+* Keep code clean and optimized
+
+7. FINAL CHECK (VERY IMPORTANT)
+
+* Before giving output, check everything:
+
+  * Netlify form is correctly detectable
+  * No broken code
+  * No missing attributes
+  * UI not broken
+  * Popup works correctly
+* Ensure everything runs perfectly
+
+GOAL:
+Make the Contact Us section:
+
+* Netlify-ready
+* More premium visually using images
+* Add one minimal premium animation
+* Smooth user experience with popup
+* Without changing the core website
