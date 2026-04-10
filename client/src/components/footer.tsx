@@ -1,20 +1,17 @@
 import { Facebook, Twitter, Linkedin, Instagram, ArrowUp } from "lucide-react";
+import { Link } from "wouter";
 
 export function Footer() {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+  const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   return (
     <footer className="bg-primary text-white pt-20 pb-10 border-t-4 border-secondary">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-          
+
           <div className="lg:col-span-1">
             <div className="flex items-center gap-2 mb-6">
-              <div className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center text-white font-bold text-xl">
-                5S
-              </div>
+              <div className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center text-white font-bold text-xl">5S</div>
               <span className="font-display font-bold text-2xl tracking-tight text-white">
                 5Seas<span className="text-secondary">Solution</span>
               </span>
@@ -23,40 +20,31 @@ export function Footer() {
               Your trusted partner for comprehensive business solutions. We help you scale, comply, and dominate your industry.
             </p>
             <div className="flex gap-4">
-              <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-secondary transition-colors">
-                <Facebook className="w-5 h-5" />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-secondary transition-colors">
-                <Twitter className="w-5 h-5" />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-secondary transition-colors">
-                <Linkedin className="w-5 h-5" />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-secondary transition-colors">
-                <Instagram className="w-5 h-5" />
-              </a>
+              <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-secondary transition-colors"><Facebook className="w-5 h-5" /></a>
+              <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-secondary transition-colors"><Twitter className="w-5 h-5" /></a>
+              <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-secondary transition-colors"><Linkedin className="w-5 h-5" /></a>
+              <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-secondary transition-colors"><Instagram className="w-5 h-5" /></a>
             </div>
           </div>
 
           <div>
             <h4 className="font-display font-bold text-lg mb-6">Quick Links</h4>
             <ul className="space-y-3">
-              <li><a href="#home" className="text-white/70 hover:text-secondary transition-colors">Home</a></li>
-              <li><a href="#about" className="text-white/70 hover:text-secondary transition-colors">About Us</a></li>
-              <li><a href="#services" className="text-white/70 hover:text-secondary transition-colors">Services</a></li>
-              <li><a href="#why-us" className="text-white/70 hover:text-secondary transition-colors">Why Choose Us</a></li>
-              <li><a href="#contact" className="text-white/70 hover:text-secondary transition-colors">Contact</a></li>
+              <li><Link href="/" className="text-white/70 hover:text-secondary transition-colors">Home</Link></li>
+              <li><Link href="/about" className="text-white/70 hover:text-secondary transition-colors">About Us</Link></li>
+              <li><Link href="/contact" className="text-white/70 hover:text-secondary transition-colors">Contact</Link></li>
+              <li><a href="/#why-us" className="text-white/70 hover:text-secondary transition-colors">Why Choose Us</a></li>
             </ul>
           </div>
 
           <div>
             <h4 className="font-display font-bold text-lg mb-6">Services</h4>
             <ul className="space-y-3">
-              <li><a href="#services" className="text-white/70 hover:text-secondary transition-colors">IT Solutions</a></li>
-              <li><a href="#services" className="text-white/70 hover:text-secondary transition-colors">Digital Marketing</a></li>
-              <li><a href="#services" className="text-white/70 hover:text-secondary transition-colors">Virtual Office</a></li>
-              <li><a href="#services" className="text-white/70 hover:text-secondary transition-colors">CA & Compliance</a></li>
-              <li><a href="#services" className="text-white/70 hover:text-secondary transition-colors">Designing & Branding</a></li>
+              <li><Link href="/services/it-services" className="text-white/70 hover:text-secondary transition-colors">IT Solutions</Link></li>
+              <li><Link href="/services/digital-marketing" className="text-white/70 hover:text-secondary transition-colors">Digital Marketing</Link></li>
+              <li><Link href="/services/virtual-office" className="text-white/70 hover:text-secondary transition-colors">Virtual Office</Link></li>
+              <li><Link href="/services/ca-services" className="text-white/70 hover:text-secondary transition-colors">CA & Compliance</Link></li>
+              <li><Link href="/services/branding" className="text-white/70 hover:text-secondary transition-colors">Designing & Branding</Link></li>
             </ul>
           </div>
 
@@ -64,17 +52,17 @@ export function Footer() {
             <h4 className="font-display font-bold text-lg mb-6">Newsletter</h4>
             <p className="text-white/70 mb-4">Subscribe to get latest updates and business insights.</p>
             <div className="flex">
-              <input 
-                type="email" 
-                placeholder="Email address" 
-                className="bg-white/10 border border-white/20 text-white rounded-l-lg px-4 py-2 w-full focus:outline-none focus:border-secondary"
+              <input
+                type="email"
+                placeholder="Email address"
+                className="bg-white/10 border border-white/20 text-white rounded-l-lg px-4 py-2 w-full focus:outline-none focus:border-secondary placeholder:text-white/40"
               />
-              <button className="bg-secondary px-4 py-2 rounded-r-lg font-semibold hover:bg-secondary/90 transition-colors">
+              <button className="bg-secondary px-4 py-2 rounded-r-lg font-semibold hover:bg-secondary/90 transition-colors whitespace-nowrap">
                 Subscribe
               </button>
             </div>
           </div>
-          
+
         </div>
 
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
@@ -85,7 +73,7 @@ export function Footer() {
             <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
           </div>
-          <button 
+          <button
             onClick={scrollToTop}
             className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 transition-colors"
           >
