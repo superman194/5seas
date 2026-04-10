@@ -1,0 +1,107 @@
+You are a senior frontend engineer specializing in theming and UX consistency.
+
+Project:
+https://5seassolutions.com
+https://github.com/superman194/5seas.git
+
+---
+
+⚠️ CURRENT ISSUE:
+- Theme handling is inconsistent
+- Default theme behavior is not aligned with modern UX standards
+
+---
+
+🎯 GOAL:
+Implement a robust, production-ready THEME SYSTEM with the following priority:
+
+---
+
+## 🌗 THEME PRIORITY LOGIC (CRITICAL)
+
+Apply theme in this exact order:
+
+1. If user has manually selected a theme → USE THAT (stored in localStorage)
+2. If no saved preference → DETECT DEVICE THEME using:
+   prefers-color-scheme
+3. Apply theme BEFORE React loads (no flicker at all)
+
+---
+
+## 🧠 IMPLEMENTATION REQUIREMENTS
+
+### 1. INITIAL THEME (NO FLICKER)
+- Theme MUST be applied in <head> using inline script
+- Do NOT wait for React or JS bundle
+- Apply class to <html> immediately:
+  - "dark" OR remove it for light
+
+---
+
+### 2. LOCAL STORAGE HANDLING
+- Store user preference:
+  - "light"
+  - "dark"
+- On load:
+  - First check localStorage
+  - If exists → apply it
+  - If not → fallback to system preference
+
+---
+
+### 3. SYSTEM THEME DETECTION
+- Use:
+  window.matchMedia('(prefers-color-scheme: dark)')
+- Automatically detect dark/light
+
+---
+
+### 4. REAL-TIME SYSTEM CHANGE (ADVANCED)
+- If user has NOT manually selected a theme:
+  - Listen for system theme changes
+  - Update theme dynamically
+
+Example:
+- User switches OS theme → website updates instantly
+
+---
+
+### 5. USER OVERRIDE (IMPORTANT)
+- Once user manually selects a theme:
+  - STOP following system preference
+  - Always use saved preference
+
+---
+
+### 6. NO FLICKER GUARANTEE
+- Absolutely NO flash of wrong theme
+- Theme must be correct on FIRST PAINT
+
+---
+
+### 7. CLEAN IMPLEMENTATION
+- Centralize theme logic
+- Avoid duplicate theme handling
+- Keep code minimal and scalable
+
+---
+
+## ⚠️ STRICT RULES
+
+- DO NOT change UI design
+- DO NOT modify layout
+- DO NOT break existing functionality
+- ONLY improve theme logic
+
+---
+
+## 🎯 EXPECTED OUTPUT
+
+- Exact files to modify (index.html, theme handler, etc.)
+- Inline script for <head>
+- Clean React-side handling (if needed)
+- Explanation of logic
+
+---
+
+Think like you're building theme behavior for a premium SaaS product like Stripe or Vercel.

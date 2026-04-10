@@ -27,22 +27,31 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!--
-      CRITICAL: Inline theme script — runs synchronously BEFORE any render.
-      Reads localStorage and applies the .dark class to <html> immediately,
-      completely eliminating the dark-mode flash (FOUC).
-      Also adds .no-transition so the global CSS colour transitions
-      don't fire during the initial paint; removed in main.tsx after mount.
+      THEME SCRIPT — Priority order:
+        1. Explicit user choice saved in localStorage  → always wins
+        2. No saved choice → follow OS prefers-color-scheme
+      Runs synchronously in <head> before any render, guaranteeing
+      zero theme flicker on first paint for every device/user.
     -->
     <script>
       (function () {
+        var STORAGE_KEY = '5seas_theme';
+        var html = document.documentElement;
         try {
-          var stored = localStorage.getItem('5seas_theme');
-          // Default is LIGHT. Dark only applies when explicitly saved by the user.
-          if (stored === 'dark') {
-            document.documentElement.classList.add('dark');
+          var stored = localStorage.getItem(STORAGE_KEY);
+          var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          // Priority 1: explicit user choice
+          // Priority 2: OS preference (no saved choice)
+          var useDark = stored === 'dark' || (stored === null && prefersDark);
+          if (useDark) {
+            html.classList.add('dark');
+          } else {
+            html.classList.remove('dark');
           }
         } catch (e) {}
-        document.documentElement.classList.add('no-transition');
+        // Suppress CSS colour transitions during the very first paint.
+        // Removed two frames later in main.tsx once React has mounted.
+        html.classList.add('no-transition');
       })();
     </script>
   </head>
