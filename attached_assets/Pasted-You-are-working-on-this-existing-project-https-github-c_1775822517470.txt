@@ -1,0 +1,84 @@
+You are working on this existing project:
+https://github.com/superman194/5seas.git
+
+IMPORTANT RULES:
+
+* Do NOT redesign the whole website
+* Do NOT change structure or layout unnecessarily
+* Keep everything minimal, premium, and lightweight
+* Only make targeted improvements
+* Maintain responsiveness and performance
+
+TASKS:
+
+1. FIX SERVICE NAVIGATION IMAGES (IMPORTANT)
+
+* In the Services navigation / section / pages, multiple services are using the same image
+
+* Replace them so EACH service has a unique and relevant image
+
+* Requirements:
+
+  * Each service must have a different image
+  * Images should match the service (IT, marketing, business, etc.)
+  * Maintain consistent style, tone, and quality (premium look)
+  * Do NOT break layout or sizing
+  * Ensure proper alignment and cropping
+
+2. ADD FIRST VISIT POPUP (WELCOME MESSAGE)
+
+* Show a premium popup ONLY when user visits the website for the first time
+
+* Popup content example:
+  "Welcome to 5SeasSolution – Premium IT & Business Services"
+
+* Requirements:
+
+  * Show only once (use localStorage or similar)
+  * Clean, premium, minimalist design
+  * Include:
+
+    * short welcome message
+    * close button (X or OK)
+  * Smooth animation (fade / scale)
+
+3. POPUP ANIMATION (MINIMAL & PREMIUM)
+
+* Add a subtle animation for popup:
+
+  * fade-in + slight scale
+  * smooth and fast (0.3s–0.6s)
+* No flashy or heavy effects
+
+4. KEEP DESIGN PREMIUM
+
+* Focus on:
+
+  * clean UI
+  * good spacing
+  * elegant visuals
+* Do NOT add unnecessary elements
+
+5. FINAL CHECK (VERY IMPORTANT)
+   Before giving output, verify:
+
+* All service images are different (no repetition)
+* Image paths are correct
+* Popup appears only on first visit
+* Popup animation works smoothly
+* No console errors
+* No layout break on mobile or desktop
+
+6. OUTPUT
+
+* Provide FULL updated code for ONLY the changed files
+* Code must be ready to copy-paste
+* Keep it clean and production-ready
+* Do not give long explanations
+
+GOAL:
+
+* Make services visually better with unique images
+* Add a premium first-visit welcome popup
+* Keep everything minimalist, smooth, and professional
+* No major changes to the website
