@@ -33,22 +33,15 @@ export function Contact() {
   });
 
   const onSubmit = (data: CreateContactInput) => {
-  // ❌ backend temporarily disabled (causing 500 error)
-  // mutation.mutate(data, {
-  //   onSuccess: () => form.reset(),
-  // });
+    mutation.mutate(data, {
+      onSuccess: () => {
+        form.reset();
+        setSubmitted(true);
+      },
+    });
+  };
 
-  // ✅ Netlify submission
-  fetch("/", {
-    method: "POST",
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: new URLSearchParams({
-      "form-name": "contact",
-      ...data,
-    }).toString(),
- });
-
-  const isValid = form.formState.isValid; // ✅ ADD
+  const isValid = form.formState.isValid;
 
   return (
     <section id="contact" className="py-24 bg-white">
@@ -119,27 +112,16 @@ export function Contact() {
             )}
 
             <Form {...form}>
-              {/* ✅ NETLIFY FORM */}
               <form
-                name="contact"
-                method="POST"
-                data-netlify="true"
-                data-netlify-honeypot="bot-field"
-                onSubmit={form.handleSubmit(() => {
-                  form.reset();
-                  setSubmitted(true);
-                  setTimeout(() => setSubmitted(false), 4000);
-                })}
+                onSubmit={form.handleSubmit(onSubmit)}
                 className="space-y-5"
               >
-                <input type="hidden" name="form-name" value="contact" />
-                <input type="hidden" name="bot-field" />
 
                 <FormField control={form.control} name="name" render={({ field }) => (
                   <FormItem>
                     <FormLabel>Full Name</FormLabel>
                     <FormControl>
-                      <Input name="name" placeholder="John Doe" {...field} />
+                      <Input placeholder="John Doe" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -150,7 +132,7 @@ export function Contact() {
                     <FormItem>
                       <FormLabel>Email</FormLabel>
                       <FormControl>
-                        <Input name="email" type="email" placeholder="you@company.com" {...field} />
+                        <Input type="email" placeholder="you@company.com" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -160,7 +142,7 @@ export function Contact() {
                     <FormItem>
                       <FormLabel>Phone</FormLabel>
                       <FormControl>
-                        <Input name="phone" type="tel" placeholder="+91 98765 43210" {...field} />
+                        <Input type="tel" placeholder="+91 98765 43210" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -186,13 +168,6 @@ export function Contact() {
                       </SelectContent>
                     </Select>
 
-                    {/* ✅ IMPORTANT FOR NETLIFY */}
-                    <input
-                      type="hidden"
-                      name="serviceNeeded"
-                      value={form.watch("serviceNeeded")}
-                    />
-
                     <FormMessage />
                   </FormItem>
                 )} />
@@ -201,7 +176,7 @@ export function Contact() {
                   <FormItem>
                     <FormLabel>Message</FormLabel>
                     <FormControl>
-                      <Textarea name="message" placeholder="Your message..." {...field} />
+                      <Textarea placeholder="Your message..." {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
