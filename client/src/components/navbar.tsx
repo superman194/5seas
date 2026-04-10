@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
-import { Menu, X, ChevronDown, Building2, Calculator, Monitor, Megaphone, PenTool } from "lucide-react";
+import { Menu, X, ChevronDown, Building2, Calculator, Monitor, Megaphone, PenTool, Sun, Moon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link, useLocation } from "wouter";
+import { useTheme } from "@/hooks/use-theme";
 
 const services = [
   { name: "Virtual Office", href: "/services/virtual-office", icon: Building2, color: "text-indigo-500" },
@@ -18,6 +19,7 @@ export function Navbar() {
   const [servicesOpen, setServicesOpen] = useState(false);
   const [location] = useLocation();
   const isHome = location === "/";
+  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -55,7 +57,7 @@ export function Navbar() {
             <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center text-white font-bold text-xl group-hover:bg-secondary transition-colors">
               5S
             </div>
-            <span className="font-display font-bold text-2xl tracking-tight text-primary">
+            <span className="font-display font-bold text-2xl tracking-tight dark:text-gray-100">
               5Seas<span className="text-secondary">Solution</span>
             </span>
           </Link>
@@ -90,10 +92,10 @@ export function Navbar() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 8 }}
                     transition={{ duration: 0.15 }}
-                    className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-60 bg-white rounded-2xl shadow-xl border border-border/50 p-2 z-50"
+                    className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-60 bg-popover rounded-2xl shadow-xl border border-border p-2 z-50"
                   >
                     {services.map((s) => (
-                      <Link key={s.href} href={s.href} className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-muted/60 transition-colors group">
+                      <Link key={s.href} href={s.href} className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-muted transition-colors group">
                         <s.icon className={`w-5 h-5 ${s.color} flex-shrink-0`} />
                         <span className="text-sm font-medium text-foreground group-hover:text-secondary transition-colors">{s.name}</span>
                       </Link>
@@ -113,6 +115,15 @@ export function Navbar() {
               Contact
             </Link>
 
+            {/* Dark mode toggle */}
+            <button
+              onClick={toggleTheme}
+              aria-label="Toggle dark mode"
+              className="w-9 h-9 rounded-full flex items-center justify-center border border-border bg-muted/50 hover:bg-muted transition-colors text-foreground/70 hover:text-foreground"
+            >
+              {theme === "dark" ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+            </button>
+
             <Link href="/contact">
               <Button className="bg-primary hover:bg-secondary text-white rounded-full px-6 transition-colors">
                 Get Consultation
@@ -120,9 +131,18 @@ export function Navbar() {
             </Link>
           </div>
 
-          <button className="md:hidden p-2 text-foreground" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          <div className="flex items-center gap-2 md:hidden">
+            <button
+              onClick={toggleTheme}
+              aria-label="Toggle dark mode"
+              className="w-9 h-9 rounded-full flex items-center justify-center border border-border bg-muted/50 text-foreground/70"
+            >
+              {theme === "dark" ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+            </button>
+            <button className="p-2 text-foreground" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
       </div>
 
@@ -132,7 +152,7 @@ export function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white border-b border-border shadow-lg overflow-hidden"
+            className="md:hidden bg-popover border-b border-border shadow-lg overflow-hidden"
           >
             <div className="px-4 py-6 space-y-1 flex flex-col">
               <Link href="/" className="text-lg font-medium text-foreground p-3 rounded-xl hover:bg-muted">Home</Link>

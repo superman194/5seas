@@ -15,12 +15,12 @@ const item = {
 
 export function Services() {
   return (
-    <section id="services" className="py-24 bg-white">
+    <section id="services" className="py-24 bg-muted/30 dark:bg-muted/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-sm font-bold text-secondary uppercase tracking-widest mb-3">Our Expertise</h2>
-          <h3 className="text-3xl md:text-5xl font-display font-bold text-primary mb-5">
+          <h3 className="text-3xl md:text-5xl font-display font-bold text-primary dark:text-gray-100 mb-5">
             Comprehensive Solutions
           </h3>
           <p className="text-lg text-muted-foreground leading-relaxed">
@@ -39,7 +39,7 @@ export function Services() {
             <motion.div
               key={service.num}
               variants={item}
-              className="relative bg-white rounded-3xl overflow-hidden border border-border/50 shadow-sm hover:shadow-2xl hover:shadow-primary/8 transition-all duration-300 group flex flex-col h-full"
+              className="relative bg-card rounded-3xl overflow-hidden border border-border/60 shadow-sm hover:shadow-2xl hover:shadow-primary/8 dark:hover:shadow-black/30 transition-all duration-300 group flex flex-col h-full"
             >
               <div
                 className="absolute inset-x-0 top-0 h-[3px] z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-t-3xl"
@@ -64,7 +64,7 @@ export function Services() {
                 </div>
               </div>
               <div className="p-7 flex flex-col flex-1">
-                <h4 className="text-[1.15rem] font-display font-bold text-primary mb-2.5 leading-snug">
+                <h4 className="text-[1.1rem] font-display font-bold text-primary dark:text-gray-100 mb-2.5 leading-snug">
                   {service.title}
                 </h4>
                 <p className="text-muted-foreground leading-relaxed mb-6 flex-grow text-sm">

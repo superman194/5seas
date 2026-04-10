@@ -12,27 +12,27 @@
     /* Navy Blue & Teal Corporate Theme */
     --background: 0 0% 100%;
     --foreground: 222 47% 11%;
-    
+
     /* Primary: Navy Blue */
     --primary: 222 47% 15%;
     --primary-foreground: 210 40% 98%;
-    
+
     /* Secondary/Accent: Teal */
     --secondary: 175 80% 35%;
     --secondary-foreground: 0 0% 100%;
 
     --card: 0 0% 100%;
     --card-foreground: 222 47% 11%;
-    
+
     --popover: 0 0% 100%;
     --popover-foreground: 222 47% 11%;
-    
+
     --muted: 210 40% 96%;
     --muted-foreground: 215 16% 47%;
-    
+
     --accent: 175 80% 35%;
     --accent-foreground: 0 0% 100%;
-    
+
     --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
 
@@ -43,8 +43,64 @@
     --radius: 0.75rem;
   }
 
+  /* ── Dark mode overrides ───────────────────────────────────────────── */
+  .dark {
+    --background: 222 28% 8%;
+    --foreground: 210 18% 88%;
+
+    /* Primary stays navy (used for bg-primary: footer, logo, CTA buttons) */
+    --primary: 222 47% 15%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 175 72% 40%;
+    --secondary-foreground: 0 0% 100%;
+
+    --card: 222 24% 12%;
+    --card-foreground: 210 18% 88%;
+
+    --popover: 222 24% 13%;
+    --popover-foreground: 210 18% 88%;
+
+    --muted: 222 22% 17%;
+    --muted-foreground: 215 14% 55%;
+
+    --accent: 175 72% 40%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 65% 52%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 222 22% 22%;
+    --input: 222 22% 22%;
+    --ring: 175 72% 40%;
+  }
+
+  /* Headings: navy in light, near-white in dark */
+  .dark h1,
+  .dark h2,
+  .dark h3,
+  .dark h4,
+  .dark h5,
+  .dark h6 {
+    color: hsl(210 18% 90%);
+  }
+
   html {
     scroll-behavior: smooth;
+  }
+
+  /* Smooth theme transitions */
+  *,
+  *::before,
+  *::after {
+    transition-property: background-color, border-color, color, fill, stroke, box-shadow;
+    transition-duration: 200ms;
+    transition-timing-function: ease;
+  }
+
+  /* Prevent transition on initial page load */
+  .no-transition * {
+    transition: none !important;
   }
 
   body {
@@ -68,6 +124,9 @@
     background-size: 40px 40px;
   }
   .glass-nav {
-    @apply bg-white/80 backdrop-blur-md border-b border-border/50 shadow-sm;
+    @apply bg-white/85 backdrop-blur-md border-b border-border/50 shadow-sm;
+  }
+  .dark .glass-nav {
+    @apply bg-card/90 backdrop-blur-md border-b border-border shadow-sm;
   }
 }
