@@ -1,0 +1,110 @@
+You are a senior full-stack developer and UI/UX designer.
+
+I have an existing project:
+GitHub Repo: https://github.com/superman194/5seas.git
+
+Your task is to upgrade and restructure this website into a modern, scalable, and professional business website for "5SeasSolution".
+
+========================
+🎯 MAIN GOALS:
+========================
+1. Convert the current single-page structure into a multi-page website.
+2. Create separate pages for each service:
+   - Virtual Office
+   - CA Services
+   - IT Services
+   - Digital Marketing
+   - Designing & Branding
+
+3. Add new sections to the Home Page:
+   - Featured Projects / Portfolio
+   - Client Testimonials
+   - Strong Hero Section (with CTA)
+   - About Summary
+   - Services Overview (cards linking to individual pages)
+   - Contact CTA section
+
+4. Add a fully functional Digital Marketing section including:
+   - SEO services
+   - Social media marketing
+   - Paid ads (Google & Meta)
+   - Analytics & reporting
+   - Lead generation funnel explanation
+
+========================
+🧱 STRUCTURE:
+========================
+Create proper folder structure:
+
+/pages
+  /services
+    - ca.html
+    - it.html
+    - digital-marketing.html
+    - branding.html
+    - virtual-office.html
+  - index.html
+  - about.html
+  - contact.html
+
+/assets
+  /css
+  /js
+  /images
+
+/components (if using framework)
+
+========================
+🎨 DESIGN REQUIREMENTS:
+========================
+- Clean, modern UI (inspired by SaaS websites)
+- Soft shadows, rounded cards, spacing consistency
+- Smooth hover effects and transitions
+- Mobile responsive (VERY IMPORTANT)
+- Use a consistent color palette (professional: blue/teal/white)
+- Add icons for each service
+- Use sections with proper spacing (no clutter)
+
+========================
+⚙️ FUNCTIONALITY:
+========================
+- Navigation bar with active page highlight
+- "Get Consultation" button (sticky or header CTA)
+- Contact form with validation
+- Popup or toast on form submission: 
+  "Inquiry submitted! We'll connect with you soon."
+
+- Smooth scrolling
+- Basic SEO setup:
+  - Meta tags
+  - Page titles
+  - Descriptions
+
+========================
+📈 BUSINESS FEATURES:
+========================
+- Testimonials section (cards with client name + feedback)
+- Portfolio/Projects section:
+  - Show sample projects (cards with image + description)
+- Call-to-action sections across pages
+- Trust indicators (icons like “100+ clients”, “5+ years experience”)
+
+========================
+💡 EXTRA IMPROVEMENTS:
+========================
+- Make everything reusable (components if possible)
+- Clean, readable code (no clutter)
+- Add comments in code
+- Optimize performance (lightweight assets)
+- Add favicon and branding consistency
+
+========================
+🎯 OUTPUT EXPECTATION:
+========================
+- Fully working upgraded website
+- Clean UI + structured code
+- Ready for deployment (Netlify/Vercel)
+- Easy to maintain and scale later
+
+Focus on making the website LOOK PREMIUM and BUSINESS-READY.
+Think like a startup landing page + agency website combined.
