@@ -15,8 +15,9 @@ const ThemeContext = createContext<ThemeContextValue>({
 function getInitialTheme(): Theme {
   if (typeof window === "undefined") return "light";
   const stored = localStorage.getItem("5seas_theme") as Theme | null;
-  if (stored === "dark" || stored === "light") return stored;
-  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  // Only honour an explicit saved preference — never auto-apply system dark mode.
+  if (stored === "dark") return "dark";
+  return "light";
 }
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {

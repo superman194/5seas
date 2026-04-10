@@ -37,9 +37,8 @@
       (function () {
         try {
           var stored = localStorage.getItem('5seas_theme');
-          var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-          var theme = stored || (prefersDark ? 'dark' : 'light');
-          if (theme === 'dark') {
+          // Default is LIGHT. Dark only applies when explicitly saved by the user.
+          if (stored === 'dark') {
             document.documentElement.classList.add('dark');
           }
         } catch (e) {}

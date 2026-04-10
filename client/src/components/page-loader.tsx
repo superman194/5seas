@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "framer-motion";
 
 interface PageLoaderProps {
@@ -7,6 +8,11 @@ interface PageLoaderProps {
 
 export function PageLoader({ delay = 220 }: PageLoaderProps) {
   const [visible, setVisible] = useState(delay === 0);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     if (delay === 0) return;
@@ -14,7 +20,16 @@ export function PageLoader({ delay = 220 }: PageLoaderProps) {
     return () => clearTimeout(t);
   }, [delay]);
 
-  return (
+  if (!mounted) return null;
+
+  /*
+    Rendered via portal into document.body so that parent transforms or
+    opacity values (e.g. from Framer Motion's AnimatePresence motion.div)
+    cannot affect the loader's visibility or positioning.
+    position:fixed is always relative to the viewport when there is no
+    ancestor with transform/filter/will-change — which we guarantee here.
+  */
+  return createPortal(
     <AnimatePresence>
       {visible && (
         <motion.div
@@ -25,7 +40,12 @@ export function PageLoader({ delay = 220 }: PageLoaderProps) {
           transition={{ duration: 0.18, ease: "easeInOut" }}
           style={{
             position: "fixed",
-            inset: 0,
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            width: "100vw",
+            height: "100vh",
             zIndex: 9998,
             display: "flex",
             flexDirection: "column",
@@ -97,6 +117,7 @@ export function PageLoader({ delay = 220 }: PageLoaderProps) {
           </p>
         </motion.div>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body
   );
 }
