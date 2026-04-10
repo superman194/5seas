@@ -1,0 +1,71 @@
+You are working on this existing project:
+https://github.com/superman194/5seas.git
+
+IMPORTANT RULES:
+- Do NOT redesign the whole website
+- Do NOT make major layout or structure changes
+- Keep everything minimal, premium, and lightweight
+- Only improve the service section/pages where needed
+- Maintain existing responsiveness and performance
+
+TASKS:
+
+1. FIX SERVICE IMAGES
+- In the Services section / Services tabs / Services pages, the same image is being repeated
+- Change this properly so each service has its own different and relevant image
+- Every service card/page/tab should feel unique visually
+- Use premium-looking modern images related to that specific service
+- Keep all images consistent in style, size, tone, and quality
+- Do NOT disturb the existing layout
+- Make sure image sizing/cropping looks clean and professional
+
+2. ADD MINIMAL PREMIUM SERVICE ANIMATION
+- Add a subtle premium animation specifically for the Services section/pages
+- When opening a service tab/page/section, add a small elegant animation such as:
+  - fade-in upward
+  - slight blur-to-clear reveal
+  - soft image zoom reveal
+  - smooth content reveal
+
+- Animation should be:
+  - minimalist
+  - premium
+  - smooth
+  - fast
+  - not flashy
+  - lightweight
+
+- Use only one clean animation style consistently
+- Prefer CSS animation or very light JavaScript
+- Do NOT use heavy libraries unless already present in the project
+
+3. KEEP IT PREMIUM
+- Improve visual feel of services without major changes
+- Focus on:
+  - unique images
+  - clean spacing
+  - elegant reveal effect
+  - premium minimalist presentation
+
+4. CHECK EVERYTHING
+Before giving final code, verify:
+- each service image is different
+- image paths are correct
+- no repeated image issue remains
+- animation works smoothly
+- no broken code
+- no console errors
+- layout is not broken on mobile or desktop
+
+5. OUTPUT FORMAT
+- Provide FULL updated code for ONLY the changed files
+- Code must be ready to copy-paste
+- Do not give long explanations
+- Keep code clean and production-ready
+
+GOAL:
+Make the Services section feel more premium by:
+- replacing repeated images with unique service-specific images
+- adding one subtle premium animation when a service is opened or shown
+- keeping the design minimalist and elegant
+- without making major changes to the website
