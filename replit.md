@@ -20,12 +20,16 @@ A modern, professional, multi-page business website for **5SeasSolution** — a 
 │       │   ├── home.tsx     # Home page (Hero, Stats, About, Services, Portfolio, Testimonials, Features, CTA, Contact)
 │       │   ├── about.tsx    # About page
 │       │   ├── contact.tsx  # Contact page (standalone)
-│       │   └── services/
-│       │       ├── virtual-office.tsx    # Virtual Office service page
-│       │       ├── ca-services.tsx       # CA Services page
-│       │       ├── it-services.tsx       # IT Services page
-│       │       ├── digital-marketing.tsx # Digital Marketing page (with funnel)
-│       │       └── branding.tsx          # Designing & Branding page
+│       │   ├── services/
+│       │   │   ├── virtual-office.tsx    # Virtual Office service page (with Unsplash hero image)
+│       │   │   ├── ca-services.tsx       # CA Services page (with finance hero image)
+│       │   │   ├── it-services.tsx       # IT Services page (with code hero image)
+│       │   │   ├── digital-marketing.tsx # Digital Marketing page (with funnel)
+│       │   │   └── branding.tsx          # Designing & Branding page (with design hero image)
+│       │   └── legal/
+│       │       ├── terms.tsx      # Terms & Conditions (12 clauses)
+│       │       ├── privacy.tsx    # Privacy Policy (10 clauses)
+│       │       └── disclaimer.tsx # Disclaimer (9 clauses)
 │       ├── components/
 │       │   ├── navbar.tsx           # Multi-page nav with Services dropdown
 │       │   ├── hero.tsx             # Hero section
@@ -63,6 +67,9 @@ A modern, professional, multi-page business website for **5SeasSolution** — a 
 | `/services/it-services` | IT Services |
 | `/services/digital-marketing` | Digital Marketing (with full funnel) |
 | `/services/branding` | Designing & Branding |
+| `/legal/terms` | Terms & Conditions |
+| `/legal/privacy` | Privacy Policy |
+| `/legal/disclaimer` | Disclaimer |
 
 ## Key Features
 - Multi-page SPA with active nav link highlighting
@@ -71,7 +78,12 @@ A modern, professional, multi-page business website for **5SeasSolution** — a 
 - Portfolio: 6 featured project cards
 - Testimonials: 6 client reviews
 - Digital Marketing page: full lead generation funnel explanation
-- Contact form with PostgreSQL persistence and toast notification
+- Contact form with PostgreSQL persistence — success banner on submission
+- Hero trust badges (100+ clients, 5+ years, All-in-One)
+- WhatsApp number: +919958173726 (correct on hero + all service pages)
+- Service pages: Unsplash hero images + floating stat cards
+- Legal pages: Terms, Privacy Policy, Disclaimer — linked in footer
+- Footer: 5-column layout with contact info, quick links, services, legal links
 - WhatsApp floating button
 - Fully mobile responsive
 

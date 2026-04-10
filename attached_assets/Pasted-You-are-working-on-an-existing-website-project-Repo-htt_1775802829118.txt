@@ -1,0 +1,88 @@
+You are working on an existing website project:
+Repo: https://github.com/superman194/5seas.git
+
+IMPORTANT:
+- DO NOT rebuild the entire project
+- DO NOT change existing working structure
+- ONLY enhance and complete missing parts
+- Keep code lightweight and efficient
+
+========================
+🎯 TASK: IMPROVE & COMPLETE WEBSITE
+========================
+
+1. 🎨 VISUAL IMPROVEMENTS (LIGHT TOUCH)
+- Improve UI spacing, font hierarchy, and alignment
+- Add subtle hover effects on cards/buttons
+- Keep current design but make it more polished and premium
+- Ensure mobile responsiveness is clean
+
+2. 🖼️ ADD PROFESSIONAL IMAGES
+- Add relevant high-quality images/icons in each service page:
+  - CA Services → finance, tax, audit visuals
+  - IT Services → coding, servers, dashboards
+  - Digital Marketing → ads, growth charts, social media
+  - Branding → design, creativity, logos
+  - Virtual Office → workspace, office environment
+
+- Use royalty-free images (Unsplash / Pexels links)
+- Optimize image size (no heavy files)
+
+3. 📄 COMPLETE LEGAL PAGES
+Create and link in footer:
+- Terms & Conditions
+- Privacy Policy
+- Disclaimer
+
+Content should include:
+- Data usage
+- Service limitations
+- Liability clause
+- Contact details
+
+4. 🧩 COMPLETE MISSING SECTIONS
+If not already present, add:
+- Testimonials (3–5 realistic samples)
+- Projects/Portfolio section (simple cards)
+- Strong CTA sections ("Get Consultation")
+
+5. 📈 DIGITAL MARKETING IMPROVEMENT
+Enhance existing Digital Marketing page with:
+- Clear service breakdown (SEO, Ads, Social Media)
+- Bullet points for deliverables
+- Simple funnel explanation (Awareness → Leads → Conversion)
+
+6. 🧭 NAVIGATION & FOOTER
+- Ensure all pages are properly linked
+- Add footer with:
+  - Quick links
+  - Services links
+  - Legal links
+  - Contact info
+
+7. ⚙️ FORM IMPROVEMENT
+- Ensure contact form works cleanly
+- Add success popup:
+  "Inquiry submitted! We'll connect with you soon."
+- Reset form after submit
+
+8. 🧹 CLEANUP
+- Remove unused code
+- Keep everything readable and modular
+- Add comments only where needed
+
+========================
+🚫 DO NOT:
+========================
+- Do not add heavy frameworks if not already used
+- Do not redesign from scratch
+- Do not overcomplicate
+
+========================
+✅ OUTPUT:
+========================
+- Enhanced UI (clean + professional)
+- Images added properly
+- Legal pages completed
+- Missing sections filled
+- Everything lightweight and working

@@ -5,143 +5,85 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { insertContactMessageSchema } from "@shared/schema";
 import type { CreateContactInput } from "@shared/routes";
 import { useCreateContactMessage } from "@/hooks/use-contact";
-import { Mail, MapPin, Phone, Loader2 } from "lucide-react";
+import { Mail, MapPin, Phone, Loader2, CheckCircle2 } from "lucide-react";
 import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
+  Form, FormControl, FormField, FormItem, FormLabel, FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
+  Select, SelectContent, SelectItem, SelectTrigger, SelectValue,
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 
 export function Contact() {
   const mutation = useCreateContactMessage();
-  const [showToast, setShowToast] = useState(false);
-  
+  const [submitted, setSubmitted] = useState(false);
+
   const form = useForm<CreateContactInput>({
     resolver: zodResolver(insertContactMessageSchema),
-    defaultValues: {
-      name: "",
-      email: "",
-      phone: "",
-      serviceNeeded: "",
-      message: "",
-    },
+    defaultValues: { name: "", email: "", phone: "", serviceNeeded: "", message: "" },
   });
 
-  // const onSubmit = (data: CreateContactInput) => {
-  // fetch("/", {
-  //   method: "POST",
-  //   headers: { "Content-Type": "application/x-www-form-urlencoded" },
-  //   body: new URLSearchParams({
-  //     "form-name": "contact",
-  //     name: data.name,
-  //     email: data.email,
-  //     phone: data.phone,
-  //     serviceNeeded: data.serviceNeeded,
-  //     message: data.message,
-  //   }).toString(),
-  //   });
-  //    //  show toast
-  //     setShowToast(true);
-  //     setTimeout(() => setShowToast(false), 3000);
-  //     // alert("Inquiry submitted! We'll connect you soon.");
-  //     form.reset();
-  //   };
-        const onSubmit = async (data: CreateContactInput) => {
-          try {
-            const response = await fetch("/", {
-              method: "POST",
-              headers: { "Content-Type": "application/x-www-form-urlencoded" },
-              body: new URLSearchParams({
-                "form-name": "contact",
-                name: data.name,
-                email: data.email,
-                phone: data.phone,
-                serviceNeeded: data.serviceNeeded,
-                message: data.message,
-              }).toString(),
-            });
-
-            if (response.ok) {
-              //  only when success
-              form.reset();
-              setShowToast(true);
-
-              setTimeout(() => setShowToast(false), 3000);
-            } else {
-              console.error("Submission failed");
-            }
-          } catch (error) {
-            console.error("Error:", error);
-          }
-        };
+  const onSubmit = (data: CreateContactInput) => {
+    mutation.mutate(data, {
+      onSuccess: () => {
+        form.reset();
+        setSubmitted(true);
+        setTimeout(() => setSubmitted(false), 5000);
+      },
+    });
+  };
 
   return (
     <section id="contact" className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-          
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <h2 className="text-sm font-bold text-secondary uppercase tracking-wider mb-2">Get In Touch</h2>
+          <h3 className="text-3xl md:text-5xl font-display font-bold text-primary mb-6">Let's Discuss Your Project</h3>
+          <p className="text-lg text-muted-foreground">
+            Ready to take your business to the next level? Fill out the form and our experts will reach out to schedule a free consultation.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          {/* Contact Info */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
+            className="flex flex-col gap-6"
           >
-            <h2 className="text-sm font-bold text-secondary uppercase tracking-wider mb-2">Get In Touch</h2>
-            <h3 className="text-3xl md:text-5xl font-display font-bold text-primary mb-6">
-              Let's Discuss Your Project
-            </h3>
-            <p className="text-lg text-muted-foreground mb-10">
-              Ready to take your business to the next level? Fill out the form, and our experts will reach out to schedule a free consultation.
-            </p>
+            {[
+              { icon: Phone, label: "Call Us", value: "+91 99581 73726", sub: "Mon–Sat, 9am to 7pm", href: "tel:+919958173726" },
+              { icon: Mail, label: "Email Us", value: "5seassolution@gmail.com", sub: "Reply within 12–24 hours", href: "mailto:5seassolution@gmail.com" },
+              { icon: MapPin, label: "Visit Us", value: "Delhi NCR, India", sub: "Corporate Business Hub", href: "#" },
+            ].map((c, i) => (
+              <a key={i} href={c.href} className="flex items-start gap-5 group">
+                <div className="w-14 h-14 bg-secondary/10 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:bg-secondary/20 transition-colors">
+                  <c.icon className="w-6 h-6 text-secondary" />
+                </div>
+                <div>
+                  <h4 className="font-bold text-primary text-lg">{c.label}</h4>
+                  <p className="text-foreground/80 font-medium">{c.value}</p>
+                  <p className="text-sm text-muted-foreground mt-0.5">{c.sub}</p>
+                </div>
+              </a>
+            ))}
 
-            <div className="space-y-8">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-primary/5 rounded-full flex items-center justify-center shrink-0">
-                  <Phone className="w-6 h-6 text-primary" />
-                </div>
-                <div>
-                  <h4 className="font-bold text-primary text-lg">Call Us</h4>
-                  <p className="text-muted-foreground">+91 99581 73726</p>
-                  <p className="text-sm text-muted-foreground mt-1">Mon-Fri, 9am to 6pm</p>
-                </div>
-              </div>
-              
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-primary/5 rounded-full flex items-center justify-center shrink-0">
-                  <Mail className="w-6 h-6 text-primary" />
-                </div>
-                <div>
-                  <h4 className="font-bold text-primary text-lg">Email Us</h4>
-                  <p className="text-muted-foreground">5seassolution@gmail.com</p>
-                  <p className="text-sm text-muted-foreground mt-1">We typically reply within 12 - 24 hours</p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-primary/5 rounded-full flex items-center justify-center shrink-0">
-                  <MapPin className="w-6 h-6 text-primary" />
-                </div>
-                <div>
-                  <h4 className="font-bold text-primary text-lg">Visit Us</h4>
-                  <p className="text-muted-foreground max-w-[200px]">Corporate Business Park, Metro Hub, City</p>
-                </div>
-              </div>
+            {/* Map / visual placeholder */}
+            <div className="mt-4 rounded-3xl overflow-hidden border border-border/50 shadow-lg h-48">
+              <img
+                src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=800&q=70&auto=format&fit=crop"
+                alt="Delhi NCR business district"
+                className="w-full h-full object-cover"
+                loading="lazy"
+              />
             </div>
           </motion.div>
 
+          {/* Form */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -150,130 +92,99 @@ export function Contact() {
             className="bg-white border border-border shadow-2xl shadow-primary/5 rounded-3xl p-8 md:p-10"
           >
             <h3 className="text-2xl font-bold text-primary mb-6">Send a Message</h3>
-            
+
+            {submitted && (
+              <div className="flex items-center gap-3 bg-emerald-50 border border-emerald-200 text-emerald-700 rounded-2xl px-5 py-4 mb-6">
+                <CheckCircle2 className="w-5 h-5 flex-shrink-0" />
+                <span className="font-medium">Inquiry submitted! We'll connect with you soon.</span>
+              </div>
+            )}
+
             <Form {...form}>
-                <form 
-                  name="contact"
-                  method="POST"
-                  data-netlify="true"
-                  onSubmit={form.handleSubmit(onSubmit)} 
-                  className="space-y-6"
-                >
-                <input type="hidden" name="form-name" value="contact" />
-                <FormField
-                  control={form.control}
-                  name="name"
-                  render={({ field }) => (
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
+                <FormField control={form.control} name="name" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-foreground">Full Name</FormLabel>
+                    <FormControl>
+                      <Input placeholder="John Doe" className="bg-muted/50 border-border/50 h-12 rounded-xl" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                  <FormField control={form.control} name="email" render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-foreground">Full Name</FormLabel>
+                      <FormLabel className="text-foreground">Email Address</FormLabel>
                       <FormControl>
-                        <Input placeholder="John Doe" className="bg-muted/50 border-border/50 h-12 rounded-xl" {...field} />
+                        <Input type="email" placeholder="you@company.com" className="bg-muted/50 border-border/50 h-12 rounded-xl" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
-                  )}
-                />
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <FormField
-                    control={form.control}
-                    name="email"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="text-foreground">Email Address</FormLabel>
-                        <FormControl>
-                          <Input type="email" placeholder="john@example.com" className="bg-muted/50 border-border/50 h-12 rounded-xl" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  
-                  <FormField
-                    control={form.control}
-                    name="phone"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="text-foreground">Phone Number</FormLabel>
-                        <FormControl>
-                          <Input type="tel" placeholder="+91 98765 43210" className="bg-muted/50 border-border/50 h-12 rounded-xl" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
+                  )} />
+                  <FormField control={form.control} name="phone" render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-foreground">Phone Number</FormLabel>
+                      <FormControl>
+                        <Input type="tel" placeholder="+91 98765 43210" className="bg-muted/50 border-border/50 h-12 rounded-xl" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )} />
                 </div>
 
-                <FormField
-                  control={form.control}
-                  name="serviceNeeded"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="text-foreground">Service Needed</FormLabel>
-                      <Select onValueChange={field.onChange} defaultValue={field.value}>
-                        <FormControl>
-                          <SelectTrigger className="bg-muted/50 border-border/50 h-12 rounded-xl">
-                            <SelectValue placeholder="Select a service" />
-                          </SelectTrigger>
-                        </FormControl>
-                        <SelectContent>
-                          <SelectItem value="CA Services">CA Services</SelectItem>
-                          <SelectItem value="Digital Marketing">Digital Marketing</SelectItem>
-                          <SelectItem value="IT Services">IT Services</SelectItem>
-                          <SelectItem value="Virtual Office">Virtual Office</SelectItem>
-                          <SelectItem value="Designing & Branding">Designing & Branding</SelectItem>
-                          <SelectItem value="Other">Other / Multiple</SelectItem>
-                        </SelectContent>
-                      </Select>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-
-                <FormField
-                  control={form.control}
-                  name="message"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="text-foreground">Message</FormLabel>
+                <FormField control={form.control} name="serviceNeeded" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-foreground">Service Needed</FormLabel>
+                    <Select onValueChange={field.onChange} value={field.value}>
                       <FormControl>
-                        <Textarea 
-                          placeholder="Tell us about your requirements..." 
-                          className="bg-muted/50 border-border/50 min-h-[120px] rounded-xl resize-none" 
-                          {...field} 
-                        />
+                        <SelectTrigger className="bg-muted/50 border-border/50 h-12 rounded-xl">
+                          <SelectValue placeholder="Select a service" />
+                        </SelectTrigger>
                       </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
+                      <SelectContent>
+                        <SelectItem value="CA Services">CA Services</SelectItem>
+                        <SelectItem value="Digital Marketing">Digital Marketing</SelectItem>
+                        <SelectItem value="IT Services">IT Services</SelectItem>
+                        <SelectItem value="Virtual Office">Virtual Office</SelectItem>
+                        <SelectItem value="Designing & Branding">Designing & Branding</SelectItem>
+                        <SelectItem value="Other">Other / Multiple</SelectItem>
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )} />
 
-                <Button 
-                  type="submit" 
+                <FormField control={form.control} name="message" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-foreground">Message</FormLabel>
+                    <FormControl>
+                      <Textarea
+                        placeholder="Tell us about your requirements..."
+                        className="bg-muted/50 border-border/50 min-h-[120px] rounded-xl resize-none"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+
+                <Button
+                  type="submit"
                   disabled={mutation.isPending}
-                  className="w-full h-14 text-lg rounded-xl bg-primary hover:bg-primary/90 text-white shadow-lg hover:shadow-xl transition-all"
+                  className="w-full h-14 text-base rounded-xl bg-primary hover:bg-secondary text-white shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all"
                 >
                   {mutation.isPending ? (
-                    <>
-                      <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                      Sending...
-                    </>
+                    <><Loader2 className="mr-2 h-5 w-5 animate-spin" /> Sending...</>
                   ) : (
                     "Submit Inquiry"
                   )}
                 </Button>
-                
               </form>
             </Form>
           </motion.div>
         </div>
       </div>
-          
-        {showToast && (
-        <div className="fixed bottom-6 right-6 bg-green-600 text-white px-6 py-3 rounded-xl shadow-lg z-50 transition-all duration-300">
-          Inquiry submitted! We'll connect you soon.
-        </div>
-       )}
     </section>
   );
 }

@@ -12,6 +12,9 @@ import CAServices from "@/pages/services/ca-services";
 import ITServices from "@/pages/services/it-services";
 import DigitalMarketing from "@/pages/services/digital-marketing";
 import Branding from "@/pages/services/branding";
+import Terms from "@/pages/legal/terms";
+import Privacy from "@/pages/legal/privacy";
+import Disclaimer from "@/pages/legal/disclaimer";
 
 function Router() {
   return (
@@ -24,6 +27,9 @@ function Router() {
       <Route path="/services/it-services" component={ITServices} />
       <Route path="/services/digital-marketing" component={DigitalMarketing} />
       <Route path="/services/branding" component={Branding} />
+      <Route path="/legal/terms" component={Terms} />
+      <Route path="/legal/privacy" component={Privacy} />
+      <Route path="/legal/disclaimer" component={Disclaimer} />
       <Route component={NotFound} />
     </Switch>
   );
