@@ -7,41 +7,46 @@ const servicesData = [
     title: "Virtual Office",
     description: "Premium business addresses, mail handling, and professional receptionist services for a fraction of the cost.",
     icon: Building2,
-    color: "from-indigo-500/20 to-indigo-500/5",
     iconColor: "text-indigo-500",
     href: "/services/virtual-office",
+    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=700&q=70&auto=format&fit=crop",
+    imageAlt: "Modern virtual office space",
   },
   {
     title: "CA Services",
     description: "Expert tax planning, audits, registration, and financial compliance handled by seasoned professionals.",
     icon: Calculator,
-    color: "from-emerald-500/20 to-emerald-500/5",
     iconColor: "text-emerald-500",
     href: "/services/ca-services",
+    image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=700&q=70&auto=format&fit=crop",
+    imageAlt: "Financial accounting and CA services",
   },
   {
     title: "IT Services",
     description: "Robust infrastructure, software development, and technical support to power your business operations.",
     icon: Monitor,
-    color: "from-blue-500/20 to-blue-500/5",
     iconColor: "text-blue-500",
     href: "/services/it-services",
+    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=700&q=70&auto=format&fit=crop",
+    imageAlt: "IT infrastructure and technology services",
   },
   {
     title: "Digital Marketing",
     description: "Data-driven SEO, social media, and paid campaigns to accelerate your growth and visibility.",
     icon: Megaphone,
-    color: "from-teal-500/20 to-teal-500/5",
     iconColor: "text-teal-500",
     href: "/services/digital-marketing",
+    image: "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=700&q=70&auto=format&fit=crop",
+    imageAlt: "Digital marketing and social media campaigns",
   },
   {
     title: "Designing & Branding",
     description: "Striking UI/UX, brand identity, and graphic design that leaves a lasting impression.",
     icon: PenTool,
-    color: "from-purple-500/20 to-purple-500/5",
     iconColor: "text-purple-500",
     href: "/services/branding",
+    image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=700&q=70&auto=format&fit=crop",
+    imageAlt: "Creative design and branding workspace",
   },
 ];
 
@@ -80,23 +85,37 @@ export function Services() {
             <motion.div
               key={index}
               variants={item}
-              className="bg-white rounded-3xl p-8 border border-border/50 shadow-lg shadow-primary/5 hover:shadow-xl hover:border-secondary/30 transition-all duration-300 group flex flex-col h-full"
+              className="bg-white rounded-3xl overflow-hidden border border-border/50 shadow-lg shadow-primary/5 hover:shadow-xl hover:border-secondary/30 transition-all duration-300 group flex flex-col h-full"
             >
-              <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${service.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                <service.icon className={`w-8 h-8 ${service.iconColor}`} />
+              {/* Service image */}
+              <div className="relative h-44 overflow-hidden flex-shrink-0">
+                <img
+                  src={service.image}
+                  alt={service.imageAlt}
+                  className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+                <div className="absolute bottom-4 left-4 w-11 h-11 rounded-xl bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-md">
+                  <service.icon className={`w-5 h-5 ${service.iconColor}`} />
+                </div>
               </div>
-              <h4 className="text-2xl font-display font-bold text-primary mb-3">
-                {service.title}
-              </h4>
-              <p className="text-muted-foreground leading-relaxed mb-8 flex-grow">
-                {service.description}
-              </p>
-              <Link
-                href={service.href}
-                className="inline-flex items-center text-sm font-bold text-primary group-hover:text-secondary transition-colors mt-auto"
-              >
-                Learn More <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
+
+              {/* Card content */}
+              <div className="p-7 flex flex-col flex-1">
+                <h4 className="text-xl font-display font-bold text-primary mb-3">
+                  {service.title}
+                </h4>
+                <p className="text-muted-foreground leading-relaxed mb-6 flex-grow text-sm">
+                  {service.description}
+                </p>
+                <Link
+                  href={service.href}
+                  className="inline-flex items-center text-sm font-bold text-primary group-hover:text-secondary transition-colors mt-auto"
+                >
+                  Learn More <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </div>
             </motion.div>
           ))}
         </motion.div>
