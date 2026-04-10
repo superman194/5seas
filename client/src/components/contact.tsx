@@ -17,27 +17,22 @@ import {
 import { Button } from "@/components/ui/button";
 
 export function Contact() {
-  const mutation = useCreateContactMessage();
+  const mutation = useCreateContactMessage(); // untouched
   const [submitted, setSubmitted] = useState(false);
 
+  // ✅ CHANGE: mode added
   const form = useForm<CreateContactInput>({
     resolver: zodResolver(insertContactMessageSchema),
+    mode: "onChange",
     defaultValues: { name: "", email: "", phone: "", serviceNeeded: "", message: "" },
   });
 
-  const onSubmit = (data: CreateContactInput) => {
-    mutation.mutate(data, {
-      onSuccess: () => {
-        form.reset();
-        setSubmitted(true);
-        setTimeout(() => setSubmitted(false), 5000);
-      },
-    });
-  };
+  const isValid = form.formState.isValid; // ✅ ADD
 
   return (
     <section id="contact" className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-sm font-bold text-secondary uppercase tracking-wider mb-2">Get In Touch</h2>
           <h3 className="text-3xl md:text-5xl font-display font-bold text-primary mb-6">Let's Discuss Your Project</h3>
@@ -47,6 +42,7 @@ export function Contact() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+
           {/* Contact Info */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -58,7 +54,7 @@ export function Contact() {
             {[
               { icon: Phone, label: "Call Us", value: "+91 99581 73726", sub: "Mon–Sat, 9am to 7pm", href: "tel:+919958173726" },
               { icon: Mail, label: "Email Us", value: "5seassolution@gmail.com", sub: "Reply within 12–24 hours", href: "mailto:5seassolution@gmail.com" },
-              { icon: MapPin, label: "Visit Us", value: "Delhi NCR, India", sub: "Corporate Business Hub", href: "#" },
+              { icon: MapPin, label: "Visit Us", value: "Gurgaon, India", sub: "Corporate Business Hub", href: "#" },
             ].map((c, i) => (
               <a key={i} href={c.href} className="flex items-start gap-5 group">
                 <div className="w-14 h-14 bg-secondary/10 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:bg-secondary/20 transition-colors">
@@ -72,7 +68,6 @@ export function Contact() {
               </a>
             ))}
 
-            {/* Map / visual placeholder */}
             <div className="mt-4 rounded-3xl overflow-hidden border border-border/50 shadow-lg h-48">
               <img
                 src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=800&q=70&auto=format&fit=crop"
@@ -96,17 +91,34 @@ export function Contact() {
             {submitted && (
               <div className="flex items-center gap-3 bg-emerald-50 border border-emerald-200 text-emerald-700 rounded-2xl px-5 py-4 mb-6">
                 <CheckCircle2 className="w-5 h-5 flex-shrink-0" />
-                <span className="font-medium">Inquiry submitted! We'll connect with you soon.</span>
+                <span className="font-medium">
+                  Thank you! We'll connect with you soon.
+                </span>
               </div>
             )}
 
             <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
+              {/* ✅ NETLIFY FORM */}
+              <form
+                name="contact"
+                method="POST"
+                data-netlify="true"
+                data-netlify-honeypot="bot-field"
+                onSubmit={form.handleSubmit(() => {
+                  form.reset();
+                  setSubmitted(true);
+                  setTimeout(() => setSubmitted(false), 4000);
+                })}
+                className="space-y-5"
+              >
+                <input type="hidden" name="form-name" value="contact" />
+                <input type="hidden" name="bot-field" />
+
                 <FormField control={form.control} name="name" render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-foreground">Full Name</FormLabel>
+                    <FormLabel>Full Name</FormLabel>
                     <FormControl>
-                      <Input placeholder="John Doe" className="bg-muted/50 border-border/50 h-12 rounded-xl" {...field} />
+                      <Input name="name" placeholder="John Doe" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -115,18 +127,19 @@ export function Contact() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                   <FormField control={form.control} name="email" render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-foreground">Email Address</FormLabel>
+                      <FormLabel>Email</FormLabel>
                       <FormControl>
-                        <Input type="email" placeholder="you@company.com" className="bg-muted/50 border-border/50 h-12 rounded-xl" {...field} />
+                        <Input name="email" type="email" placeholder="you@company.com" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
                   )} />
+
                   <FormField control={form.control} name="phone" render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-foreground">Phone Number</FormLabel>
+                      <FormLabel>Phone</FormLabel>
                       <FormControl>
-                        <Input type="tel" placeholder="+91 98765 43210" className="bg-muted/50 border-border/50 h-12 rounded-xl" {...field} />
+                        <Input name="phone" type="tel" placeholder="+91 98765 43210" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -135,10 +148,10 @@ export function Contact() {
 
                 <FormField control={form.control} name="serviceNeeded" render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-foreground">Service Needed</FormLabel>
+                    <FormLabel>Service Needed</FormLabel>
                     <Select onValueChange={field.onChange} value={field.value}>
                       <FormControl>
-                        <SelectTrigger className="bg-muted/50 border-border/50 h-12 rounded-xl">
+                        <SelectTrigger>
                           <SelectValue placeholder="Select a service" />
                         </SelectTrigger>
                       </FormControl>
@@ -148,41 +161,44 @@ export function Contact() {
                         <SelectItem value="IT Services">IT Services</SelectItem>
                         <SelectItem value="Virtual Office">Virtual Office</SelectItem>
                         <SelectItem value="Designing & Branding">Designing & Branding</SelectItem>
-                        <SelectItem value="Other">Other / Multiple</SelectItem>
+                        <SelectItem value="Other">Other</SelectItem>
                       </SelectContent>
                     </Select>
+
+                    {/* ✅ IMPORTANT FOR NETLIFY */}
+                    <input
+                      type="hidden"
+                      name="serviceNeeded"
+                      value={form.watch("serviceNeeded")}
+                    />
+
                     <FormMessage />
                   </FormItem>
                 )} />
 
                 <FormField control={form.control} name="message" render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-foreground">Message</FormLabel>
+                    <FormLabel>Message</FormLabel>
                     <FormControl>
-                      <Textarea
-                        placeholder="Tell us about your requirements..."
-                        className="bg-muted/50 border-border/50 min-h-[120px] rounded-xl resize-none"
-                        {...field}
-                      />
+                      <Textarea name="message" placeholder="Your message..." {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
                 )} />
 
+                {/* ✅ BUTTON LOCK */}
                 <Button
                   type="submit"
-                  disabled={mutation.isPending}
-                  className="w-full h-14 text-base rounded-xl bg-primary hover:bg-secondary text-white shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all"
+                  disabled={!isValid}
+                  className="w-full h-14 rounded-xl bg-primary text-white disabled:bg-gray-400 disabled:cursor-not-allowed"
                 >
-                  {mutation.isPending ? (
-                    <><Loader2 className="mr-2 h-5 w-5 animate-spin" /> Sending...</>
-                  ) : (
-                    "Submit Inquiry"
-                  )}
+                  Submit Inquiry
                 </Button>
+
               </form>
             </Form>
           </motion.div>
+
         </div>
       </div>
     </section>

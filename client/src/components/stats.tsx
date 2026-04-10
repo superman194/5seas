@@ -3,7 +3,7 @@ import { Users, Briefcase, Award, Clock } from "lucide-react";
 
 const stats = [
   { icon: Users, value: "100+", label: "Happy Clients", color: "text-indigo-500", bg: "bg-indigo-500/10" },
-  { icon: Briefcase, value: "250+", label: "Projects Delivered", color: "text-teal-500", bg: "bg-teal-500/10" },
+  { icon: Briefcase, value: "100+", label: "Projects Delivered", color: "text-teal-500", bg: "bg-teal-500/10" },
   { icon: Award, value: "5+", label: "Years of Excellence", color: "text-emerald-500", bg: "bg-emerald-500/10" },
   { icon: Clock, value: "24/7", label: "Dedicated Support", color: "text-blue-500", bg: "bg-blue-500/10" },
 ];
