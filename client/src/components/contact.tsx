@@ -23,9 +23,30 @@ export function Contact() {
   // ✅ CHANGE: mode added
   const form = useForm<CreateContactInput>({
     resolver: zodResolver(insertContactMessageSchema),
-    mode: "onChange",
-    defaultValues: { name: "", email: "", phone: "", serviceNeeded: "", message: "" },
+    defaultValues: {
+      name: "",
+      email: "",
+      phone: "",
+      serviceNeeded: "",
+      message: "",
+    },
   });
+
+  const onSubmit = (data: CreateContactInput) => {
+  // ❌ backend temporarily disabled (causing 500 error)
+  // mutation.mutate(data, {
+  //   onSuccess: () => form.reset(),
+  // });
+
+  // ✅ Netlify submission
+  fetch("/", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams({
+      "form-name": "contact",
+      ...data,
+    }).toString(),
+ });
 
   const isValid = form.formState.isValid; // ✅ ADD
 

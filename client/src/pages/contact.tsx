@@ -22,7 +22,7 @@ import { useState } from "react";
 const contactInfo = [
   { icon: Phone, label: "Phone", value: "+91 99581 73726", href: "tel:+919958173726", color: "text-teal-500", bg: "bg-teal-500/10" },
   { icon: Mail, label: "Email", value: "5seassolution@gmail.com", href: "mailto:5seassolution@gmail.com", color: "text-blue-500", bg: "bg-blue-500/10" },
-  { icon: MapPin, label: "Location", value: "Gurgaon, India", href: "#", color: "text-rose-500", bg: "bg-rose-500/10" },
+  { icon: MapPin, label: "Location", value: "Delhi NCR, India", href: "#", color: "text-rose-500", bg: "bg-rose-500/10" },
   { icon: Clock, label: "Business Hours", value: "Mon–Sat, 9am – 7pm", href: "#", color: "text-amber-500", bg: "bg-amber-500/10" },
 ];
 
@@ -126,7 +126,14 @@ export default function Contact() {
                 )}
 
                 <Form {...form}>
-                  <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
+                  <form 
+                      name="contact"
+                      method="POST"
+                      data-netlify="true"
+                      netlify-honeypot="bot-field"
+                      onSubmit={form.handleSubmit(onSubmit)}
+                      className="space-y-5"
+                    >
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                       <FormField control={form.control} name="name" render={({ field }) => (
                         <FormItem>
