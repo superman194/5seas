@@ -1,0 +1,97 @@
+You are working on this existing project:
+https://github.com/superman194/5seas.git
+
+IMPORTANT RULES:
+
+* Do NOT redesign the website
+* Do NOT change structure unnecessarily
+* Keep everything minimal, clean, and production-ready
+* Only fix navigation and routing issues + add missing page
+
+TASKS:
+
+1. CREATE A DEDICATED SERVICES PAGE (IMPORTANT)
+
+* Currently navbar "Services" only has dropdown, no main page
+
+* Create a proper "Services" page 
+
+* This page should:
+
+  * Show all services in a clean layout (cards/grid)
+  * Each service should have:
+
+    * image
+    * title
+    * short description
+    * clickable link to its detail page
+
+* Keep design:
+
+  * minimal
+  * premium
+  * consistent with existing UI
+
+2. FIX NAVBAR BEHAVIOR
+
+* When clicking "Services" in navbar:
+
+  * It should open the new Services page and keep the dropdown as it is 
+* Dropdown can still exist for quick access
+
+3. FIX ROUTING / LINK ISSUE (VERY IMPORTANT)
+
+* Issue:
+  Opening direct URLs like:
+  /service/it-service
+  gives 404 error
+
+* Fix this so:
+
+  * All service detail pages work when accessed directly via URL
+  * Works in production (Netlify or static hosting)
+
+* Solution approach (choose best based on project):
+
+  * Add proper routing handling
+
+* Ensure:
+
+  * No broken links
+  * Direct URL access works
+  * Refresh on any page does NOT break
+
+4. KEEP IT CLEAN
+
+* No unnecessary changes
+* No heavy libraries
+* Maintain performance
+
+5. FINAL CHECK
+   Before giving output:
+
+* Services page loads correctly
+* Navbar "Services" opens that page
+* Dropdown still works
+* All service links work
+* Direct URLs like /service/it-service work without error
+* No console errors
+* Works on mobile + desktop
+
+6. OUTPUT
+
+* Provide FULL updated code for ONLY changed files
+* Include:
+
+  * Services page file
+  * Navbar update
+  * Routing fix (_redirects or equivalent)
+* Code must be ready to copy-paste
+* No long explanations
+
+GOAL:
+
+* Add a proper Services page
+* Fix navigation UX
+* Fix direct URL routing issue
+* Keep everything minimal, premium, and stable

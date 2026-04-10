@@ -9,6 +9,7 @@ import NotFound from "@/pages/not-found";
 import Home from "@/pages/home";
 import About from "@/pages/about";
 import Contact from "@/pages/contact";
+import ServicesPage from "@/pages/services";
 import VirtualOffice from "@/pages/services/virtual-office";
 import CAServices from "@/pages/services/ca-services";
 import ITServices from "@/pages/services/it-services";
@@ -24,6 +25,7 @@ function Router() {
       <Route path="/" component={Home} />
       <Route path="/about" component={About} />
       <Route path="/contact" component={Contact} />
+      <Route path="/services" component={ServicesPage} />
       <Route path="/services/virtual-office" component={VirtualOffice} />
       <Route path="/services/ca-services" component={CAServices} />
       <Route path="/services/it-services" component={ITServices} />

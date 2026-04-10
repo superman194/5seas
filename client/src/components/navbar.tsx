@@ -69,9 +69,20 @@ export function Navbar() {
             </Link>
 
             <div className="relative" onMouseEnter={() => setServicesOpen(true)} onMouseLeave={() => setServicesOpen(false)}>
-              <button className={`flex items-center gap-1 text-sm font-medium transition-colors ${location.startsWith("/services") ? "text-secondary font-semibold" : "text-foreground/80 hover:text-secondary"}`}>
-                Services <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${servicesOpen ? "rotate-180" : ""}`} />
-              </button>
+              <div className="flex items-center gap-0.5">
+                <Link
+                  href="/services"
+                  className={`text-sm font-medium transition-colors ${location.startsWith("/services") ? "text-secondary font-semibold" : "text-foreground/80 hover:text-secondary"}`}
+                >
+                  Services
+                </Link>
+                <button
+                  aria-label="Open services menu"
+                  className={`p-1 transition-colors ${location.startsWith("/services") ? "text-secondary" : "text-foreground/60 hover:text-secondary"}`}
+                >
+                  <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${servicesOpen ? "rotate-180" : ""}`} />
+                </button>
+              </div>
               <AnimatePresence>
                 {servicesOpen && (
                   <motion.div
