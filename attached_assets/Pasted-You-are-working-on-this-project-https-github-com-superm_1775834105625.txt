@@ -1,0 +1,123 @@
+You are working on this project:
+https://github.com/superman194/5seas.git
+
+IMPORTANT:
+
+* Do NOT redesign entire website
+* Keep structure same
+* Only fix quality issues (UI + UX + logic)
+* Make it PREMIUM and CLEAN
+
+TASKS:
+
+1. FIX DARK MODE (PROPERLY)
+
+* Current dark mode is not clean or consistent → FIX it
+
+* Do this properly:
+
+  * Use CSS variables for colors (root level)
+  * Define light and dark theme variables clearly
+
+* Dark mode should:
+
+  * Use premium dark tones (#0f172a, #111827, etc.) NOT pure black
+  * Maintain proper contrast (text clearly readable)
+  * Update ALL components:
+
+    * navbar
+    * cards
+    * service section
+    * background
+    * buttons
+    * inputs
+
+* Add smooth transition (0.3s ease)
+
+* Save preference in localStorage
+
+* Ensure toggle works perfectly
+
+2. MAKE SERVICES PAGE ACTUALLY PREMIUM
+
+* Currently it looks like homepage → FIX visual quality
+
+* Improve WITHOUT changing structure:
+
+  * Add proper section header (title + small subtitle)
+  * Improve card UI:
+
+    * soft shadow
+    * border radius
+    * better spacing
+    * consistent image ratio
+  * Add hover effect:
+
+    * slight lift (translateY)
+    * soft shadow increase
+
+* Ensure:
+
+  * clean grid
+  * equal spacing
+  * visually balanced layout
+
+3. FIX ANIMATION QUALITY (MAKE IT PREMIUM)
+
+* Current animations feel basic → improve
+
+* Use ONLY ONE or TWO animations:
+
+  * smooth fade-up on scroll
+  * card hover micro interaction
+
+* Keep:
+
+  * duration short (0.3–0.6s)
+  * smooth easing
+  * no flashy effects
+
+4. OFFLINE EXPERIENCE (CONNECTED DOTS GAME)
+
+* If user is OFFLINE (no internet):
+
+  * Detect using: navigator.onLine
+
+* Show a simple overlay:
+
+  * Message: "You're offline"
+  * Add a small interactive "connect the dots" mini-game
+
+* Game requirements:
+
+  * Very lightweight (pure JS)
+  * Simple clickable dots connection (basic canvas or div-based)
+  * No libraries
+  * Clean UI
+
+* Only show when offline
+
+* Hide when back online
+
+5. FINAL CHECK (VERY IMPORTANT)
+
+* Dark mode works perfectly everywhere
+* Services page looks premium (not like homepage)
+* Animations are smooth and minimal
+* Offline detection works
+* Game loads ONLY offline
+* No console errors
+* No layout break
+
+6. OUTPUT
+
+* Provide FULL updated code for ONLY changed files
+* Clean, production-ready
+* No long explanation
+
+GOAL:
+
+* Fix broken dark mode → make it premium
+* Upgrade Services page visually
+* Improve animations (minimal but high-quality)
+* Add offline experience with small interactive element
