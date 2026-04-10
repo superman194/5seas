@@ -3,7 +3,7 @@ import { CheckCircle2 } from "lucide-react";
 
 export function About() {
   return (
-    <section id="about" className="py-20 bg-white relative">
+    <section id="about" className="py-20 bg-background relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           
@@ -29,7 +29,7 @@ export function About() {
               </div>
 
               {/* Floating badge */}
-              <div className="absolute -bottom-8 -right-8 bg-white p-5 rounded-2xl shadow-xl border border-border/50">
+              <div className="absolute -bottom-8 -right-8 bg-card p-5 rounded-2xl shadow-xl border border-border/50">
                 <div className="flex items-center gap-3">
                   <div className="w-11 h-11 bg-secondary/10 rounded-full flex items-center justify-center text-secondary flex-shrink-0">
                     <CheckCircle2 className="w-5 h-5" />

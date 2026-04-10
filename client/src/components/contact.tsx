@@ -60,7 +60,7 @@ export function Contact() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-50 flex items-center justify-center px-4"
-            style={{ backgroundColor: "rgba(15,23,42,0.55)", backdropFilter: "blur(4px)" }}
+            style={{ backgroundColor: "rgba(15,23,42,0.60)", backdropFilter: "blur(6px)" }}
             onClick={() => setShowPopup(false)}
           >
             <motion.div
@@ -69,7 +69,7 @@ export function Contact() {
               exit={{ opacity: 0, scale: 0.92, y: 16 }}
               transition={{ duration: 0.25 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative bg-white rounded-3xl shadow-2xl p-10 max-w-sm w-full text-center"
+              className="relative bg-card border border-border rounded-3xl shadow-2xl p-10 max-w-sm w-full text-center"
             >
               <button
                 onClick={() => setShowPopup(false)}
@@ -79,11 +79,11 @@ export function Contact() {
                 <X className="w-4 h-4" />
               </button>
 
-              <div className="w-16 h-16 bg-emerald-50 rounded-full flex items-center justify-center mx-auto mb-5">
+              <div className="w-16 h-16 bg-emerald-500/10 rounded-full flex items-center justify-center mx-auto mb-5">
                 <CheckCircle2 className="w-8 h-8 text-emerald-500" />
               </div>
 
-              <h3 className="text-2xl font-bold text-primary mb-2">Thank You!</h3>
+              <h3 className="text-2xl font-bold text-primary dark:text-[hsl(210_20%_92%)] mb-2">Thank You!</h3>
               <p className="text-muted-foreground leading-relaxed">
                 We've received your inquiry and will get back to you shortly.
               </p>
@@ -99,12 +99,12 @@ export function Contact() {
         )}
       </AnimatePresence>
 
-      <section id="contact" className="py-24 bg-gradient-to-b from-white to-slate-50/60">
+      <section id="contact" className="py-24 bg-gradient-to-b from-background to-muted/40 dark:from-background dark:to-muted/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-sm font-bold text-secondary uppercase tracking-wider mb-2">Get In Touch</h2>
-            <h3 className="text-3xl md:text-5xl font-display font-bold text-primary mb-6">Let's Discuss Your Project</h3>
+            <h3 className="text-3xl md:text-5xl font-display font-bold text-primary dark:text-[hsl(210_20%_92%)] mb-6">Let's Discuss Your Project</h3>
             <p className="text-lg text-muted-foreground">
               Ready to take your business to the next level? Fill out the form and our experts will reach out to schedule a free consultation.
             </p>
@@ -117,7 +117,7 @@ export function Contact() {
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.5 }}
               className="flex flex-col gap-6"
             >
               {[
@@ -130,14 +130,13 @@ export function Contact() {
                     <c.icon className="w-6 h-6 text-secondary" />
                   </div>
                   <div>
-                    <h4 className="font-bold text-primary text-lg">{c.label}</h4>
+                    <h4 className="font-bold text-primary dark:text-[hsl(210_20%_92%)] text-lg">{c.label}</h4>
                     <p className="text-foreground/80 font-medium">{c.value}</p>
                     <p className="text-sm text-muted-foreground mt-0.5">{c.sub}</p>
                   </div>
                 </a>
               ))}
 
-              {/* Image with gradient overlay + zoom-on-hover animation */}
               <div className="mt-4 rounded-3xl overflow-hidden border border-border/50 shadow-lg h-52 relative group">
                 <img
                   src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=900&q=75&auto=format&fit=crop"
@@ -158,10 +157,10 @@ export function Contact() {
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="bg-white border border-border shadow-2xl shadow-primary/5 rounded-3xl p-8 md:p-10"
+              transition={{ duration: 0.5 }}
+              className="bg-card border border-border shadow-2xl shadow-primary/5 rounded-3xl p-8 md:p-10"
             >
-              <h3 className="text-2xl font-bold text-primary mb-6">Send a Message</h3>
+              <h3 className="text-2xl font-bold text-primary dark:text-[hsl(210_20%_92%)] mb-6">Send a Message</h3>
 
               <Form {...form}>
                 <form
@@ -172,7 +171,6 @@ export function Contact() {
                   onSubmit={form.handleSubmit(onSubmit)}
                   className="space-y-5"
                 >
-                  {/* Netlify required hidden fields */}
                   <input type="hidden" name="form-name" value="contact" />
                   <input type="text" name="bot-field" style={{ display: "none" }} />
 
@@ -183,6 +181,7 @@ export function Contact() {
                         <Input
                           placeholder="John Doe"
                           className="h-11 rounded-xl focus-visible:ring-secondary/40"
+                          data-testid="input-name"
                           {...field}
                         />
                       </FormControl>
@@ -199,6 +198,7 @@ export function Contact() {
                             type="email"
                             placeholder="you@company.com"
                             className="h-11 rounded-xl focus-visible:ring-secondary/40"
+                            data-testid="input-email"
                             {...field}
                           />
                         </FormControl>
@@ -214,6 +214,7 @@ export function Contact() {
                             type="tel"
                             placeholder="+91 98765 43210"
                             className="h-11 rounded-xl focus-visible:ring-secondary/40"
+                            data-testid="input-phone"
                             {...field}
                           />
                         </FormControl>
@@ -227,7 +228,7 @@ export function Contact() {
                       <FormLabel>Service Needed</FormLabel>
                       <Select onValueChange={field.onChange} value={field.value}>
                         <FormControl>
-                          <SelectTrigger className="h-11 rounded-xl focus:ring-secondary/40">
+                          <SelectTrigger className="h-11 rounded-xl focus:ring-secondary/40" data-testid="select-service">
                             <SelectValue placeholder="Select a service" />
                           </SelectTrigger>
                         </FormControl>
@@ -240,7 +241,6 @@ export function Contact() {
                           <SelectItem value="Other">Other</SelectItem>
                         </SelectContent>
                       </Select>
-                      {/* Hidden input so Netlify receives the select value */}
                       <input type="hidden" name="serviceNeeded" value={form.watch("serviceNeeded")} />
                       <FormMessage />
                     </FormItem>
@@ -253,6 +253,7 @@ export function Contact() {
                         <Textarea
                           placeholder="Tell us about your project..."
                           className="rounded-xl min-h-[100px] focus-visible:ring-secondary/40 resize-none"
+                          data-testid="textarea-message"
                           {...field}
                         />
                       </FormControl>
@@ -263,7 +264,8 @@ export function Contact() {
                   <Button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full h-13 rounded-xl bg-primary text-white hover:bg-primary/90 active:scale-[0.98] transition-all duration-150 disabled:opacity-60 disabled:cursor-not-allowed font-semibold text-base"
+                    className="w-full h-13 rounded-xl bg-primary text-white hover:bg-secondary active:scale-[0.98] transition-all duration-150 disabled:opacity-60 disabled:cursor-not-allowed font-semibold text-base"
+                    data-testid="button-submit"
                   >
                     {isSubmitting ? "Sending…" : "Submit Inquiry"}
                   </Button>

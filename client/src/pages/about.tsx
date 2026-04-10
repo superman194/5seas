@@ -32,7 +32,7 @@ export default function About() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }}>
-              <span className="inline-block text-sm font-bold uppercase tracking-wider text-secondary bg-white border border-border/50 px-4 py-1.5 rounded-full mb-5 shadow-sm">
+              <span className="inline-block text-sm font-bold uppercase tracking-wider text-secondary bg-card border border-border/50 px-4 py-1.5 rounded-full mb-5 shadow-sm">
                 About Us
               </span>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-extrabold text-primary leading-tight mb-6">
@@ -53,7 +53,7 @@ export default function About() {
             </motion.div>
 
             <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }} className="relative">
-              <div className="bg-white rounded-3xl p-8 border border-border/50 shadow-xl">
+              <div className="bg-card rounded-3xl p-8 border border-border/50 shadow-xl">
                 <h3 className="text-xl font-bold text-primary mb-6">What Sets Us Apart</h3>
                 <ul className="space-y-4">
                   {[
@@ -81,7 +81,7 @@ export default function About() {
       <Stats />
 
       {/* Mission & Vision */}
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl md:text-4xl font-display font-bold text-primary mb-4">Our Mission & Values</h2>
@@ -96,7 +96,7 @@ export default function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="bg-muted/30 rounded-3xl p-8 border border-border/40 text-center hover:bg-white hover:shadow-xl transition-all duration-300"
+                className="bg-muted/30 rounded-3xl p-8 border border-border/40 text-center hover:bg-card hover:shadow-xl transition-shadow duration-300"
               >
                 <div className="w-14 h-14 rounded-2xl bg-secondary/10 flex items-center justify-center mx-auto mb-5">
                   <v.icon className="w-7 h-7 text-secondary" />

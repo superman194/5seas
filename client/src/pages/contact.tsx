@@ -53,7 +53,7 @@ export default function Contact() {
       <section className="pt-32 pb-16 bg-gradient-to-br from-primary/5 via-background to-secondary/5">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <span className="inline-block text-sm font-bold uppercase tracking-wider text-secondary bg-white border border-border/50 px-4 py-1.5 rounded-full mb-5 shadow-sm">
+            <span className="inline-block text-sm font-bold uppercase tracking-wider text-secondary bg-card border border-border/50 px-4 py-1.5 rounded-full mb-5 shadow-sm">
               Contact Us
             </span>
             <h1 className="text-4xl md:text-5xl font-display font-extrabold text-primary leading-tight mb-5">
@@ -78,7 +78,7 @@ export default function Contact() {
               transition={{ duration: 0.6 }}
               className="lg:col-span-2 space-y-6"
             >
-              <div className="bg-white rounded-3xl p-8 border border-border/50 shadow-lg">
+              <div className="bg-card rounded-3xl p-8 border border-border/50 shadow-lg">
                 <h2 className="text-2xl font-display font-bold text-primary mb-6">Get in Touch</h2>
                 <div className="space-y-5">
                   {contactInfo.map((c, i) => (
@@ -116,7 +116,7 @@ export default function Contact() {
               transition={{ duration: 0.6 }}
               className="lg:col-span-3"
             >
-              <div className="bg-white rounded-3xl p-8 border border-border/50 shadow-lg">
+              <div className="bg-card rounded-3xl p-8 border border-border/50 shadow-lg">
                 <h2 className="text-2xl font-display font-bold text-primary mb-6">Send Us a Message</h2>
 
                 {submitted && (

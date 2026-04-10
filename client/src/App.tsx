@@ -6,6 +6,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { WelcomePopup } from "@/components/welcome-popup";
 import { ThemeProvider } from "@/hooks/use-theme";
+import { OfflineOverlay } from "@/components/offline-overlay";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/home";
 import About from "@/pages/about";
@@ -64,6 +65,7 @@ function App() {
         <TooltipProvider>
           <Toaster />
           <WelcomePopup />
+          <OfflineOverlay />
           <AnimatedRouter />
         </TooltipProvider>
       </QueryClientProvider>

@@ -20,7 +20,7 @@ export function Services() {
 
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-sm font-bold text-secondary uppercase tracking-widest mb-3">Our Expertise</h2>
-          <h3 className="text-3xl md:text-5xl font-display font-bold text-primary dark:text-gray-100 mb-5">
+          <h3 className="text-3xl md:text-5xl font-display font-bold text-primary dark:text-[hsl(210_20%_92%)] mb-5">
             Comprehensive Solutions
           </h3>
           <p className="text-lg text-muted-foreground leading-relaxed">
@@ -39,12 +39,17 @@ export function Services() {
             <motion.div
               key={service.num}
               variants={item}
-              className="relative bg-card rounded-3xl overflow-hidden border border-border/60 shadow-sm hover:shadow-2xl hover:shadow-primary/8 dark:hover:shadow-black/30 transition-all duration-300 group flex flex-col h-full"
+              whileHover={{ y: -6 }}
+              transition={{ duration: 0.25 }}
+              className="relative bg-card rounded-3xl overflow-hidden border border-border/60 shadow-md hover:shadow-2xl hover:shadow-black/10 dark:hover:shadow-black/40 transition-shadow duration-300 group flex flex-col h-full"
             >
+              {/* Top accent line */}
               <div
                 className="absolute inset-x-0 top-0 h-[3px] z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-t-3xl"
                 style={{ backgroundColor: service.accentHex }}
               />
+
+              {/* Image */}
               <div className="relative h-48 overflow-hidden flex-shrink-0">
                 <img
                   src={service.image}
@@ -63,8 +68,10 @@ export function Services() {
                   <service.icon className={`w-5 h-5 ${service.iconColor}`} />
                 </div>
               </div>
+
+              {/* Content */}
               <div className="p-7 flex flex-col flex-1">
-                <h4 className="text-[1.1rem] font-display font-bold text-primary dark:text-gray-100 mb-2.5 leading-snug">
+                <h4 className="text-[1.1rem] font-display font-bold text-primary dark:text-[hsl(210_20%_92%)] mb-2.5 leading-snug">
                   {service.title}
                 </h4>
                 <p className="text-muted-foreground leading-relaxed mb-6 flex-grow text-sm">
@@ -72,7 +79,7 @@ export function Services() {
                 </p>
                 <Link
                   href={service.href}
-                  className="inline-flex items-center self-start gap-1.5 text-xs font-bold px-4 py-2 rounded-full border transition-all duration-200 mt-auto"
+                  className="inline-flex items-center self-start gap-1.5 text-xs font-bold px-4 py-2 rounded-full border transition-all duration-200 mt-auto hover:-translate-y-0.5"
                   style={{
                     borderColor: `${service.accentHex}33`,
                     color: service.accentHex,
@@ -80,8 +87,9 @@ export function Services() {
                   }}
                   onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = `${service.accentHex}1a`; }}
                   onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = `${service.accentHex}0d`; }}
+                  data-testid={`link-service-card-${service.num}`}
                 >
-                  Learn More <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                  Learn More <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
               </div>
             </motion.div>

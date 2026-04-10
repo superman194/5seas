@@ -72,7 +72,7 @@ const item = {
 
 export function Portfolio() {
   return (
-    <section className="py-24 bg-white">
+    <section className="py-24 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-sm font-bold text-secondary uppercase tracking-wider mb-2">Our Work</h2>
@@ -108,7 +108,7 @@ export function Portfolio() {
               </p>
               <div className="flex flex-wrap gap-2">
                 {p.tags.map((tag, j) => (
-                  <span key={j} className="text-xs bg-white/70 border border-border/50 text-foreground/70 px-3 py-1 rounded-full font-medium">
+                  <span key={j} className="text-xs bg-card/80 border border-border/50 text-foreground/70 px-3 py-1 rounded-full font-medium">
                     {tag}
                   </span>
                 ))}

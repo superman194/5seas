@@ -90,7 +90,7 @@ export default function DigitalMarketing() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }}>
-              <span className="inline-block text-sm font-bold uppercase tracking-wider text-teal-500 bg-white border border-border/50 px-4 py-1.5 rounded-full mb-5 shadow-sm">
+              <span className="inline-block text-sm font-bold uppercase tracking-wider text-teal-500 bg-card border border-border/50 px-4 py-1.5 rounded-full mb-5 shadow-sm">
                 Digital Marketing
               </span>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-extrabold text-primary leading-tight mb-6">
@@ -115,7 +115,7 @@ export default function DigitalMarketing() {
 
             <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }} className="grid grid-cols-2 gap-4">
               {results.map((r, i) => (
-                <div key={i} className="bg-white rounded-2xl p-6 border border-border/50 shadow-lg text-center">
+                <div key={i} className="bg-card rounded-2xl p-6 border border-border/50 shadow-lg text-center">
                   <p className="text-4xl font-display font-extrabold text-teal-500 mb-1">{r.metric}</p>
                   <p className="text-sm text-muted-foreground font-medium">{r.label}</p>
                 </div>
@@ -126,7 +126,7 @@ export default function DigitalMarketing() {
       </section>
 
       {/* Services */}
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl md:text-4xl font-display font-bold text-primary mb-4">Our Digital Marketing Services</h2>
@@ -140,7 +140,7 @@ export default function DigitalMarketing() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="bg-muted/30 rounded-3xl p-8 border border-border/40 hover:bg-white hover:shadow-xl hover:border-border/60 transition-all duration-300"
+                className="bg-muted/30 rounded-3xl p-8 border border-border/40 hover:bg-card hover:shadow-xl hover:border-border/60 transition-shadow duration-300"
               >
                 <div className={`w-12 h-12 rounded-2xl ${s.bg} flex items-center justify-center mb-5`}>
                   <s.icon className={`w-6 h-6 ${s.color}`} />
@@ -178,7 +178,7 @@ export default function DigitalMarketing() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.12 }}
-                className="bg-white rounded-3xl p-7 border border-border/50 shadow-lg text-center relative"
+                className="bg-card rounded-3xl p-7 border border-border/50 shadow-lg text-center relative"
               >
                 {i < funnelSteps.length - 1 && (
                   <div className="hidden lg:block absolute top-12 -right-3 w-6 h-6 z-10">
@@ -197,7 +197,7 @@ export default function DigitalMarketing() {
       </section>
 
       {/* Why Us */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
@@ -222,7 +222,7 @@ export default function DigitalMarketing() {
               </ul>
             </motion.div>
             <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
-              <div className="bg-white rounded-3xl p-8 border border-border/50 shadow-xl">
+              <div className="bg-card rounded-3xl p-8 border border-border/50 shadow-xl">
                 <div className="w-16 h-16 rounded-2xl bg-teal-500/10 flex items-center justify-center mb-6">
                   <Megaphone className="w-8 h-8 text-teal-500" />
                 </div>

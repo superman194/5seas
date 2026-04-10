@@ -80,7 +80,7 @@ export function Testimonials() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="bg-white rounded-3xl p-8 border border-border/50 shadow-lg hover:shadow-xl hover:border-secondary/20 transition-all duration-300 flex flex-col"
+              className="bg-card rounded-3xl p-8 border border-border/50 shadow-lg hover:shadow-xl hover:border-secondary/20 transition-all duration-300 flex flex-col"
             >
               <Quote className="w-8 h-8 text-secondary/30 mb-4" />
               <p className="text-foreground/80 leading-relaxed mb-6 flex-grow italic">"{t.feedback}"</p>

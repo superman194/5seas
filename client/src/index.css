@@ -10,14 +10,12 @@
     --font-sans: 'Plus Jakarta Sans', sans-serif;
 
     /* Navy Blue & Teal Corporate Theme */
-    --background: 0 0% 100%;
+    --background: 210 20% 98%;
     --foreground: 222 47% 11%;
 
-    /* Primary: Navy Blue */
     --primary: 222 47% 15%;
     --primary-foreground: 210 40% 98%;
 
-    /* Secondary/Accent: Teal */
     --secondary: 175 80% 35%;
     --secondary-foreground: 0 0% 100%;
 
@@ -41,28 +39,30 @@
     --ring: 175 80% 35%;
 
     --radius: 0.75rem;
+
+    /* Surface helpers */
+    --surface: 0 0% 100%;
+    --surface-2: 210 40% 97%;
   }
 
-  /* ── Dark mode overrides ───────────────────────────────────────────── */
   .dark {
-    --background: 222 28% 8%;
-    --foreground: 210 18% 88%;
+    --background: 222 32% 7%;
+    --foreground: 210 20% 90%;
 
-    /* Primary stays navy (used for bg-primary: footer, logo, CTA buttons) */
     --primary: 222 47% 15%;
     --primary-foreground: 210 40% 98%;
 
     --secondary: 175 72% 40%;
     --secondary-foreground: 0 0% 100%;
 
-    --card: 222 24% 12%;
-    --card-foreground: 210 18% 88%;
+    --card: 222 28% 11%;
+    --card-foreground: 210 20% 90%;
 
-    --popover: 222 24% 13%;
-    --popover-foreground: 210 18% 88%;
+    --popover: 222 28% 12%;
+    --popover-foreground: 210 20% 90%;
 
-    --muted: 222 22% 17%;
-    --muted-foreground: 215 14% 55%;
+    --muted: 222 24% 16%;
+    --muted-foreground: 215 14% 58%;
 
     --accent: 175 72% 40%;
     --accent-foreground: 0 0% 100%;
@@ -70,47 +70,55 @@
     --destructive: 0 65% 52%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 222 22% 22%;
-    --input: 222 22% 22%;
+    --border: 222 22% 20%;
+    --input: 222 22% 20%;
     --ring: 175 72% 40%;
+
+    --surface: 222 28% 11%;
+    --surface-2: 222 24% 16%;
   }
 
-  /* Headings: navy in light, near-white in dark */
+  /* Headings */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    @apply font-bold tracking-tight text-primary;
+  }
+
   .dark h1,
   .dark h2,
   .dark h3,
   .dark h4,
   .dark h5,
   .dark h6 {
-    color: hsl(210 18% 90%);
+    @apply text-[hsl(210_20%_92%)];
   }
 
   html {
     scroll-behavior: smooth;
   }
 
-  /* Smooth theme transitions */
+  /* Smooth theme transition on all elements */
   *,
   *::before,
   *::after {
-    transition-property: background-color, border-color, color, fill, stroke, box-shadow;
-    transition-duration: 200ms;
+    transition-property: background-color, border-color, color, fill, stroke, box-shadow, opacity;
+    transition-duration: 300ms;
     transition-timing-function: ease;
   }
 
-  /* Prevent transition on initial page load */
+  /* Disable transition on initial page load */
   .no-transition * {
     transition: none !important;
+  }
+
+  /* Override framer-motion timing so it isn't overridden */
+  [style*="transform"] {
+    transition-property: background-color, border-color, color, fill, stroke, box-shadow, opacity;
   }
 
   body {
     @apply bg-background text-foreground antialiased selection:bg-secondary selection:text-white;
     font-family: var(--font-sans);
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-display);
-    @apply font-bold tracking-tight text-primary;
   }
 }
 
@@ -118,15 +126,32 @@
   .text-balance {
     text-wrap: balance;
   }
+
   .bg-grid-pattern {
-    background-image: linear-gradient(to right, hsl(var(--muted)) 1px, transparent 1px),
-      linear-gradient(to bottom, hsl(var(--muted)) 1px, transparent 1px);
+    background-image: linear-gradient(to right, hsl(var(--border)) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--border)) 1px, transparent 1px);
     background-size: 40px 40px;
   }
+
   .glass-nav {
-    @apply bg-white/85 backdrop-blur-md border-b border-border/50 shadow-sm;
+    @apply bg-white/85 dark:bg-[hsl(222_28%_11%/0.92)] backdrop-blur-md border-b border-border/50 shadow-sm;
   }
-  .dark .glass-nav {
-    @apply bg-card/90 backdrop-blur-md border-b border-border shadow-sm;
+
+  /* Premium card surface — adapts to dark/light */
+  .surface {
+    background-color: hsl(var(--surface));
+  }
+  .surface-2 {
+    background-color: hsl(var(--surface-2));
+  }
+
+  /* Fade-up animation for scroll reveals */
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .animate-fade-up {
+    animation: fade-up 0.5s ease-out both;
   }
 }

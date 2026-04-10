@@ -23,7 +23,8 @@ export function Hero() {
 
   return (
     <section id="home" className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden bg-grid-pattern">
-      <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-white/80 to-white pointer-events-none" />
+      {/* Light/dark adaptive gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/80 to-background pointer-events-none" />
       <div className="absolute top-0 right-0 -mr-40 -mt-40 w-96 h-96 rounded-full bg-secondary/10 blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 left-0 -ml-40 -mb-40 w-96 h-96 rounded-full bg-primary/5 blur-3xl pointer-events-none" />
 
@@ -40,7 +41,7 @@ export function Hero() {
           </motion.div>
 
           <motion.h1
-            className="text-4xl md:text-6xl lg:text-7xl font-display font-extrabold text-primary leading-tight mb-6 text-balance"
+            className="text-4xl md:text-6xl lg:text-7xl font-display font-extrabold text-primary dark:text-[hsl(210_20%_92%)] leading-tight mb-6 text-balance"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
@@ -68,7 +69,10 @@ export function Hero() {
             transition={{ duration: 0.5, delay: 0.25 }}
           >
             {badges.map((b, i) => (
-              <span key={i} className="flex items-center gap-1.5 text-sm text-muted-foreground bg-white border border-border/50 px-3 py-1.5 rounded-full shadow-sm">
+              <span
+                key={i}
+                className="flex items-center gap-1.5 text-sm text-muted-foreground bg-card border border-border/60 px-3 py-1.5 rounded-full shadow-sm"
+              >
                 <CheckCircle2 className="w-4 h-4 text-secondary flex-shrink-0" /> {b}
               </span>
             ))}
@@ -84,6 +88,7 @@ export function Hero() {
               size="lg"
               className="w-full sm:w-auto text-base rounded-full h-14 px-8 bg-primary hover:bg-secondary text-white shadow-xl shadow-primary/20 hover:-translate-y-1 transition-all"
               onClick={scrollToContact}
+              data-testid="button-get-consultation"
             >
               Get Free Consultation <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
@@ -93,6 +98,7 @@ export function Hero() {
               variant="outline"
               className="w-full sm:w-auto text-base rounded-full h-14 px-8 border-2 border-secondary/30 text-secondary hover:bg-secondary/5 hover:border-secondary hover:-translate-y-1 transition-all"
               onClick={() => window.open("https://wa.me/+919958173726?text=Hello%205SeasSolution%2C%20I%20am%20interested%20in%20your%20services.", "_blank")}
+              data-testid="button-whatsapp"
             >
               <MessageCircle className="mr-2 w-5 h-5" /> Chat on WhatsApp
             </Button>
