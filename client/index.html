@@ -26,6 +26,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+    <!-- Google Tag Manager -->
+    <script>
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id=GTM-K3JJDBTX'+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-K3JJDBTX');
+    </script>
+    <!-- End Google Tag Manager -->
+
     <!--
       THEME SCRIPT — Priority order:
         1. Explicit user choice saved in localStorage  → always wins
@@ -40,8 +50,6 @@
         try {
           var stored = localStorage.getItem(STORAGE_KEY);
           var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-          // Priority 1: explicit user choice
-          // Priority 2: OS preference (no saved choice)
           var useDark = stored === 'dark' || (stored === null && prefersDark);
           if (useDark) {
             html.classList.add('dark');
@@ -49,13 +57,19 @@
             html.classList.remove('dark');
           }
         } catch (e) {}
-        // Suppress CSS colour transitions during the very first paint.
-        // Removed two frames later in main.tsx once React has mounted.
         html.classList.add('no-transition');
       })();
     </script>
   </head>
+
   <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+      <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K3JJDBTX"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
     <!-- Premium loader — visible instantly, removed after React mounts -->
     <div id="app-loader" style="
       position:fixed;inset:0;z-index:9999;
